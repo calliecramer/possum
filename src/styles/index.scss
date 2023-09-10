@@ -5,24 +5,235 @@ $light: #bdb38b;
 $highlight: #ce4a48;
 
 /* Typography */
-@import url("https://fonts.googleapis.com/css2?family=Lalezar&family=The+Girl+Next+Door&family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
-
+@import "/node_modules/rfs/scss";
+@import url("https://fonts.googleapis.com/css2?family=Lalezar&family=Reenie+Beanie&family=The+Girl+Next+Door&family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
 h1 {
   font-family: "The Girl Next Door", cursive;
 }
 
 h2, h3, h4, h5, h6 {
-  font-family: "Lalezar", cursive;
+  font-family: "Lalezar", sans-serif;
 }
 
 p, ul, li {
   font-family: "Work Sans", sans-serif;
+  line-height: 1.25;
+}
+
+.handwritten {
+  font-family: "Reenie Beanie", cursive;
+}
+
+a {
+  color: $white;
 }
 
 body {
-  margin: 0;
-
-  .test {
-    border: 0;
+  h1 {
+    @include font-size(12rem);
+    mix-blend-mode: overlay;
   }
+  h2 {
+    @include font-size(8rem);
+    color: transparent;
+    margin: 0;
+  }
+  h3 {
+    @include font-size(4rem);
+    -webkit-text-stroke: 0.25px $light;
+    color: transparent;
+    margin: 0;
+  }
+  p {
+    @include font-size(1rem);
+  }
+  .handwritten {
+    @include font-size(1.25rem);
+  }
+}
+
+/* Screen Sizing */
+$phone: 640px;
+$tablet: 768px;
+$desktop: 1024px;
+
+@mixin phone-up {
+  @media (min-width: $phone) { @content; }
+}
+
+@mixin tablet-up {
+  @media (min-width: $tablet) { @content; }
+}
+
+@mixin desktop-up {
+  @media (min-width: $desktop) { @content; }
+}
+
+.screen {
+  width: 100vw;
+  min-height: 100vh;
+  h2 {
+    padding: 0.25em;
+    padding-bottom: 0;
+  }
+}
+
+.padded {
+  padding: 2em;
+}
+
+.light-bg {
+  background-color: $light;
+  color: $black;
+  h2 {
+    -webkit-text-stroke: 0.25px $white;
+  }
+}
+
+.dark-bg {
+  background-color: $black;
+  color: $white;
+  h2 {
+    -webkit-text-stroke: 0.25px $light;
+  }
+}
+
+.intro-video {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../images/possum-placeholder.png");
+  background-size: cover;
+  color: $white;
+}
+
+.text-screen {
+  background-image: url("../images/blur-bg.png");
+  background-size: cover;
+  color: $white;
+  p {
+    margin: 0;
+  }
+  div {
+    max-width: 50%;
+    margin-bottom: 3em;
+    &:last-child {
+      text-align: right;
+    }
+  }
+}
+
+.comps {
+  .poster-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1.5em;
+    text-align: center;
+    .poster {
+      display: grid;
+      justify-items: center;
+      img {
+        max-width: 100%;
+        max-height: 25em;
+        grid-area: 1/1;
+      }
+      .overlay {
+        transition: 0.25s;
+        &:hover {
+          opacity: 0;
+        }
+      }
+    }
+    @include tablet-up {
+      grid-template-columns: repeat(3, 1fr);
+      img {
+        max-height: none;
+      }
+    }
+  }
+}
+
+.residents {
+  .residents-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2em;
+    @include tablet-up {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .resident {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(4, 1fr);
+      background-size: cover;
+      background-position: center;
+      .lower-third {
+        grid-area: 4/1;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        width: 100%;
+        background: rgba(0, 0, 0, 10%);
+        background: linear-gradient(0deg, rgba(0, 0, 0, 30%) 0%, rgba(0, 0, 0, 0%) 90%);
+        .name {
+          padding: 5px;
+          h3 {
+            -webkit-text-stroke: 0.25px $white;
+            mix-blend-mode: overlay;
+            position: relative;
+            bottom: -12px;
+          }
+          p {
+            margin: 0;
+          }
+        }
+      }
+      .bio {
+        display: none;
+        grid-area: span 3/1;
+        background: #00000090;
+      }
+      &.open {
+        .lower-third {
+          background-color: #00000090;
+        }
+        .bio {
+          padding: 1em;
+          overflow: auto;
+          display: block;
+          text-align: center;
+          img {
+            max-height: 200px;
+            padding-bottom: 1em;
+          }
+          p {
+            margin: 0;
+            font-weight: 300;
+            @include font-size(0.85rem);
+          }
+          @include phone-up {
+            text-align: left;
+            padding: 2em;
+            display: flex;
+            gap: 2em;
+          }
+        }
+      }
+    }
+    #possum {
+      background-image: url("../images/possum.jpg");
+    }
+    #annabella {
+      background-image: url("../images/possum.jpg");
+    }
+    .the-possum {
+      background-image: url("../images/possum.jpg");
+    }
+  }
+}
+
+.footer {
+  padding: 0.5em 1em;
+  display: flex;
+  justify-content: space-between;
 }

@@ -2,6 +2,12 @@
   "extends": "stylelint-config-standard",
   "rules": {
     "selector-list-comma-newline-after": null,
-    "font-family-name-quotes": null
+    "font-family-name-quotes": null,
+    "at-rule-no-unknown": null,
+    "import-notation": null,
+    "at-rule-empty-line-before": null,
+    "rule-empty-line-before": null,
+    "declaration-empty-line-before": null,
+    "color-function-notation": null
   }
 }
