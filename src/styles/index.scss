@@ -1,6 +1,28 @@
-$body-color: slateblue;
+/* Colors */
+$black: #000;
+$white: #fff;
+$light: #bdb38b;
+$highlight: #ce4a48;
+
+/* Typography */
+@import url("https://fonts.googleapis.com/css2?family=Lalezar&family=The+Girl+Next+Door&family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+h1 {
+  font-family: "The Girl Next Door", cursive;
+}
+
+h2, h3, h4, h5, h6 {
+  font-family: "Lalezar", cursive;
+}
+
+p, ul, li {
+  font-family: "Work Sans", sans-serif;
+}
 
 body {
-  color: $body-color;
-  font-family: sans-serif;
+  margin: 0;
+
+  .test {
+    border: 0;
+  }
 }
