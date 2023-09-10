@@ -59,7 +59,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "core-js": "^3.26.1",
+    "core-js": "^3.32.2",
     "purecss": "^3.0.0"
   }
 }
