@@ -1,6 +1,16 @@
 import '../styles/index.scss';
 require('purecss');
 
-// resident bios
+let bio = document.querySelectorAll('.bio-toggle');
 
-document.querySelector('.bio').click();
+bio.forEach((button) => {
+    button.addEventListener('click', () => {
+        let targetID = button.getAttribute('data-target');
+        let target = document.getElementById(targetID);
+        if (target.classList.contains("open")){
+            target.classList.remove("open");
+        } else {
+            target.classList.add("open");
+        }
+    });
+});

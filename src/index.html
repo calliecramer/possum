@@ -10,12 +10,12 @@
   <div class="intro-video screen">
     <h1>POSSUM</h1>
   </div>
-  <div class="screen padded text-screen">
-    <div>
+  <div class="screen text-screen">
+    <div class="padded">
       <h3>LOGLINE</h3>
       <p>When the leader of an artist residency kills the possum that’s been eating their cauliflower, the residents come to a shocking consensus.</p>
     </div>
-    <div>
+    <div class="padded">
       <h3>THE WHY</h3>
       <p>The world is shifting and we are moving towards a more equitable culture. However, many of us have become obsessed with not being canceled, eager for the simplicity of “us vs. them” thinking. We are interested in the potential for a <strong>productive way to deal with moral ambiguity</strong> — to normalize people we label “good” acting badly and “bad” people being good.</p>
     </div>
@@ -52,17 +52,17 @@
   <div class="screen dark-bg residents">
     <h2>THE RESIDENTS</h2>
     <div class="residents-container padded">
-      <div class="resident open" id="possum">
+      <div class="resident" id="possum">
         <div class="lower-third">
           <div class="name">
             <h3>THE POSSUM</h3>
             <p>manipulated by puppeteer MERY Y.Y. CHEUNG</p>
           </div>
-          <button>bio</button>
+          <button class="bio-toggle" data-target="possum">bio</button>
         </div>
         <div class="bio">
-          <img src="images/hannah-shealy.jpg" alt="Hanna Shealy Headshot">
-          <p>Hannah Shealy is an actor and singer based in NYC and London. REGIONAL: <i>The Rose Tattoo, Unknown Soldier, The First Immigrant/Queens</i> (Williamstown Theatre Festival). COLUMBIA UNIVERSITY: <i>Orlando, Cowboy Mouth, Clybourne Park, Macbeth, Top Girls, The Seagull</i>. MFA Acting: Columbia University. Hannah was recently awarded Best Actress at the Dark Comedy Film Festival and the San Francisco International Film Festival for her work in <i>Max and Taco</i>. <a href="www.hannahshealy.com">www.hannahshealy.com</a> </p>
+          <!--<img src="#" alt="Mery Y.Y. Cheung">-->
+          <p>(she/they) Mery Y.Y. Cheung is a designer, puppeteer, producer, and Arts activist from New York City. Credits include Object Movement Puppetry Festival (Center at West Park), Layer the Walls (14th Street Y), Simon and His Shoes (The Tank), co-producer to the Puppet Spread puppet slam series with Ladies of Mischief (The Tank), TV series Awkwafina is Nora from Queens episode “Grandma and Chill” (Comedy Central), Murmurations (LMCC), Museum Mile with IBEX Puppetry (Metropolitan Museum), among others.</p>
         </div>
       </div>
       <div class="resident" id="annabella">
@@ -71,29 +71,63 @@
             <h3>ANNABELLA</h3>
             <p>played by HANNAH SHEALY</p>
           </div>
-          <button>bio</button>
+          <button class="bio-toggle" data-target="annabella">bio</button>
         </div>
         <div class="bio">
           <img src="images/hannah-shealy.jpg" alt="Hanna Shealy Headshot">
-          <p>Hannah Shealy is an actor and singer based in NYC and London. REGIONAL: <i>The Rose Tattoo, Unknown Soldier, The First Immigrant/Queens</i> (Williamstown Theatre Festival). COLUMBIA UNIVERSITY: <i>Orlando, Cowboy Mouth, Clybourne Park, Macbeth, Top Girls, The Seagull</i>. MFA Acting: Columbia University. Hannah was recently awarded Best Actress at the Dark Comedy Film Festival and the San Francisco International Film Festival for her work in <i>Max and Taco</i>. <a href="www.hannahshealy.com">www.hannahshealy.com</a> </p>
+          <p>Hannah Shealy is an actor and singer based in NYC and London. REGIONAL: <i>The Rose Tattoo, Unknown Soldier, The First Immigrant/Queens</i> (Williamstown Theatre Festival). COLUMBIA UNIVERSITY: <i>Orlando, Cowboy Mouth, Clybourne Park, Macbeth, Top Girls, The Seagull</i>. MFA Acting: Columbia University. Hannah was recently awarded Best Actress at the Dark Comedy Film Festival and the San Francisco International Film Festival for her work in <i>Max and Taco</i>. <a href="www.hannahshealy.com">hannahshealy.com</a> </p>
         </div>
       </div>
-      <div class="resident the-possum">
+      <div class="resident" id="pinecone">
         <div class="lower-third">
           <div class="name">
-            <h3>THE POSSUM</h3>
-            <p>manipulated by puppeteer MERY Y.Y. CHEUNG</p>
+            <h3>PINECONE</h3>
+            <p>played by MISHA BROOKS</p>
           </div>
-          <button>bio</button>
+          <button class="bio-toggle" data-target="pinecone">bio</button>
+        </div>
+        <div class="bio">
+          <img src="images/misha-brooks.jpg" alt="Misha Brooks Headshot">
+          <p>(he/him) Misha Brooks is an actor living in New York City. He’s a co-founder and member of the performance art group Subtle Pride. His work can be seen on Netflix, Hulu, Amazon Prime, and most recently in the Paramount Plus comedy, “Players”. He has a BFA in Drama from New York University.</p>
         </div>
       </div>
-      <div class="resident the-possum">
+      <div class="resident" id="tilly">
         <div class="lower-third">
           <div class="name">
-            <h3>ANNABELLA</h3>
-            <p>played by HANNAH SHEALY</p>
+            <h3>TILLY</h3>
+            <p>played by MICHELLE DAVIS</p>
           </div>
-          <button>bio</button>
+          <button class="bio-toggle" data-target="tilly">bio</button>
+        </div>
+        <div class="bio">
+          <img src="images/michelle-davis.jpg" alt="Michelle Davis Headshot">
+          <p>(she/her) Michelle Davis is an actor, writer, and comedian based in New York City. Michelle is currently writing on the sketch/variety series ZIWE (A24/Showtime) seasons 1 & 2, and she starred in multiple sketches that she wrote. Michelle wrote for season 3 of the HBO series, A BLACK LADY SKETCH SHOW, which she received an Emmy nomination for Outstanding Writing For A Variety Series - 2022. She is Black, graduated from NYU with a double major in Acting and Politics, and her favorite cycling instructor calls her “fun!” (He also sometimes calls her “Mikaela” and she is too polite to correct him).</p>
+        </div>
+      </div>
+      <div class="resident" id="hadley">
+        <div class="lower-third">
+          <div class="name">
+            <h3>HADLEY</h3>
+            <p>GILBERT DIEGO SANCHEZ</p>
+          </div>
+          <button class="bio-toggle" data-target="hadley">bio</button>
+        </div>
+        <div class="bio">
+          <img src="images/gilbert-diego-sanchez.jpg" alt="Gilbert Diego Sanchez Headshot">
+          <p>(he/they) Gilbert is an actor and cabaret singer based in Brooklyn, New York. He has produced many of his own shows, including <i>The 4/20 Show, Cats: The Other Cats Musical</i>, and <i>Me & My Good Judys at Good Judy</i>. Off-Broadway: <i>Showgirls the Musical</i>. Regional: Ritchie Valens in <i>Buddy: The Buddy Holly Story</i> at Bucks County Playhouse. TV: <i>Law and Order: Organized Crime, New Amsterdam, Bull and The Path</i>. <a href="https://www.instagram.com/gilbertwithaz/">@gilbertwithaz</a></p>  
+        </div>
+      </div>
+      <div class="resident" id="blaze">
+        <div class="lower-third">
+          <div class="name">
+            <h3>BLAZE</h3>
+            <p>played by SOPHIE SAGAN-GUTHERZ</p>
+          </div>
+          <button class="bio-toggle" data-target="blaze">bio</button>
+        </div>
+        <div class="bio">
+          <img src="images/soph.jpg" alt="Sophie Sagan-Gutherz Headshot">
+          <p>Soph/ie is a genderqueer, crippunk, storyteller. Recent: POSSUM advanced as a quarter-finalist in the HollyShorts Screenwriting Competition; Faultline Theatre (writer/actor); t4t, c4c (Easterseals Disability Film Challenge, writer/actor/EP). Current: Greenhouse Lab (Orchard Project). Honors: Resident (Fresh Ground Pepper), Resident (The Barn at Lee). Finalist placements: Williamstown J. Michael Friedman Fellowship, Soho Rep Writer/Director Lab, The Civilians R&D Group, New Georges The Jam, The Public Emerging Writers Group, and EST Youngblood. Two-time semi-finalist for NPC/The O'Neill. Select performer collaborations: Lincoln Center, Ars Nova, TFANA, The Public, and Williamstown. <a href="https://www.sophiesagangutherz.com/">sophiesagangutherz.com</a></p>
         </div>
       </div>
     </div>
@@ -104,12 +138,12 @@
   <div class="screen dark-bg residents">
     <h2>THE TEAM</h2>
   </div>
-  <div class="screen padded text-screen">
-    <div>
+  <div class="screen text-screen">
+    <div class="padded">
       <h3>A STATEMENT ON THE WGA AND SAG STRIKES</h3>
       <p>We stand in solidarity with our fellow screenwriters and actors as they strike for fair contracts. The POSSUM set did not cross WGA or SAG picket lines. We were cleared by our SAG representative to continue with our shoot as scheduled. We’re excited to be a SAG project, as we believe in unions and how they support their members.</p>
     </div>
-    <div>
+    <div class="padded">
       <h3>FUNDING</h3>
       <p>We have excitingly been granted fiscal sponsorship from Stowe Story Labs, a film development non-profit that Daisy has worked with before through their writing labs and retreats. Their support allows our supporters/donors to receive tax deductions on their contributions.</p>
       <p>While our fundraising campaign ended successfully, raising 1K over our proposed goal, you can still donate here to assist with a more involved post-production team and costly festival submissions</p>

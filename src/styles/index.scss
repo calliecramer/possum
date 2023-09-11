@@ -34,7 +34,8 @@ body {
     mix-blend-mode: overlay;
   }
   h2 {
-    @include font-size(8rem);
+    @include font-size(7rem);
+    -webkit-text-stroke: 0.25px $light;
     color: transparent;
     margin: 0;
   }
@@ -187,36 +188,54 @@ $desktop: 1024px;
             margin: 0;
           }
         }
+        button {
+          margin: 1em;
+          background: $highlight;
+          border: none;
+          border-radius: 50em;
+          color: $white;
+          text-decoration: underline;
+          padding: 0.5em;
+          &:hover {
+            cursor: pointer;
+          }
+        }
       }
       .bio {
-        display: none;
+        opacity: 0;
         grid-area: span 3/1;
         background: #00000090;
+        padding: 1em;
+        padding-bottom: 0;
+        overflow: auto;
+        display: block;
+        text-align: center;
+        img {
+          max-height: 150px;
+          padding-bottom: 1em;
+        }
+        p {
+          margin: 0;
+          font-weight: 300;
+          @include font-size(0.85rem);
+        }
+        @include phone-up {
+          text-align: left;
+          padding: 2em;
+          padding-bottom: 0;
+          display: flex;
+          gap: 2em;
+          img {
+            padding-bottom: 0;
+          }
+        }
       }
       &.open {
         .lower-third {
           background-color: #00000090;
         }
         .bio {
-          padding: 1em;
-          overflow: auto;
-          display: block;
-          text-align: center;
-          img {
-            max-height: 200px;
-            padding-bottom: 1em;
-          }
-          p {
-            margin: 0;
-            font-weight: 300;
-            @include font-size(0.85rem);
-          }
-          @include phone-up {
-            text-align: left;
-            padding: 2em;
-            display: flex;
-            gap: 2em;
-          }
+          opacity: 1;
         }
       }
     }
@@ -226,7 +245,16 @@ $desktop: 1024px;
     #annabella {
       background-image: url("../images/possum.jpg");
     }
-    .the-possum {
+    #pinecone {
+      background-image: url("../images/possum.jpg");
+    }
+    #tilly {
+      background-image: url("../images/possum.jpg");
+    }
+    #hadley {
+      background-image: url("../images/possum.jpg");
+    }
+    #blaze {
       background-image: url("../images/possum.jpg");
     }
   }
