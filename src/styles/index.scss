@@ -105,6 +105,22 @@ $desktop: 1024px;
   }
 }
 
+.texture {
+  &.top {
+    margin-bottom: -4px;
+  }
+  &.bottom {
+    margin-top: -4px;
+  }
+  &.light {
+    filter: invert(80%) sepia(9%) saturate(928%) hue-rotate(11deg) brightness(88%) contrast(90%);
+  }
+  &.flip img {
+    transform: rotate(180deg);
+    margin-top: -1px;
+  }
+}
+
 .intro-video {
   display: flex;
   align-items: center;
@@ -112,22 +128,44 @@ $desktop: 1024px;
   background-image: url("../images/possum-placeholder.png");
   background-size: cover;
   color: $white;
+  height: 0 !important;
 }
 
 .text-screen {
-  background-image: url("../images/blur-bg.png");
-  background-size: cover;
   color: $white;
   p {
     margin: 0;
   }
-  .width-container div {
-    max-width: 50%;
-    margin-bottom: 3em;
-    &:last-child {
-      text-align: right;
+  .width-container {
+    padding: 10em 2em 2em;
+    @include phone-up {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
+    div {
+      padding-bottom: 2em;
+      &:first-child {
+        grid-row: 1;
+        grid-column: 1 / span 2;
+      }
+      &:last-child {
+        text-align: right;
+        grid-row: 2;
+        grid-column: 2 / span 2;
+      }
     }
   }
+}
+
+.img-bg {
+  background-image: url("../images/blur-bg.png");
+  background-size: cover;
+  background-position: top;
+  width: 100vw;
+  height: 110vh;
+  position: fixed;
+  z-index: -20;
 }
 
 .comps {
