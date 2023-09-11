@@ -79,6 +79,12 @@ $desktop: 1024px;
   }
 }
 
+.width-container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .padded {
   padding: 2em;
 }
@@ -115,7 +121,7 @@ $desktop: 1024px;
   p {
     margin: 0;
   }
-  div {
+  .width-container div {
     max-width: 50%;
     margin-bottom: 3em;
     &:last-child {
@@ -176,6 +182,7 @@ $desktop: 1024px;
         width: 100%;
         background: rgba(0, 0, 0, 10%);
         background: linear-gradient(0deg, rgba(0, 0, 0, 30%) 0%, rgba(0, 0, 0, 0%) 90%);
+        transition: 0.25s all;
         .name {
           padding: 5px;
           h3 {
@@ -210,6 +217,7 @@ $desktop: 1024px;
         overflow: auto;
         display: block;
         text-align: center;
+        transition: 0.25s all;
         img {
           max-height: 150px;
           padding-bottom: 1em;
