@@ -37,10 +37,10 @@ gsap.to(".intro-video", {
             scrub: 1,
             pin: true,
         },
-        opacity: 0, 
-        start: "100",
+        opacity: 0
     });  
 
+// logline and why text section
 gsap.from(".logline", {
     scrollTrigger: {
         trigger: ".logline",
@@ -72,7 +72,7 @@ gsap.to ("#text-1", {
     }
 });
 
-
+// poster section
 gsap.from (".poster-text", {
     scrollTrigger: {
         start: "center center",
@@ -104,28 +104,55 @@ mm.add("(min-width: 768px)", () => {
             start: "center center",
             end: "+=700",
             pin: true,
-            markers: true
         }
     });
 });
 
+// Residents section
 
+// Timeline section
+
+// Crew section
+
+// statement and funding text section
+gsap.from(".statement", {
+    scrollTrigger: {
+        trigger: ".statement",
+        start: "top center",
+        end: "+=200",
+        toggleActions: "restart pause none none", 
+        scrub: 1,
+    },
+    x: "-120%",
+});
+
+gsap.from(".funding", {
+    scrollTrigger: {
+        trigger: ".funding",
+        start: "top center",
+        end: "+=200",
+        toggleActions: "restart pause none none", 
+        scrub: 1
+    },
+    x: "130%",
+});
+
+// @todo: fix mobile issues
+mm.add("(min-width: 768px)", () => {
+    gsap.to ("#text-2", {
+        scrollTrigger: {
+            trigger: "#text-2",
+            start: "top top",
+            end: "+=500",
+            pin: true
+        }
+    });
+});
 /*gsap.to('#text-1', {
     backgroundPosition: '0 -100000%',
     ease: 'none',
     scrollTrigger: {
         trigger: '#text-1',
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: true
-    }
-});
-
-gsap.to('#text-2', {
-    backgroundPosition: '50% 100%',
-    ease: 'none',
-    scrollTrigger: {
-        trigger: '#text-2',
         start: 'top bottom',
         end: 'bottom top',
         scrub: true
