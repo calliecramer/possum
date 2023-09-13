@@ -109,6 +109,17 @@ mm.add("(min-width: 768px)", () => {
 });
 
 // Residents section
+gsap.from (".note", {
+    scrollTrigger: {
+        start: "center center",
+        trigger: ".note",
+        scrub: 1
+    },
+    opacity: 0,
+    duration: 2,
+    ease: "power1.inOut",
+    stagger: 2
+});
 
 // Timeline section
 
