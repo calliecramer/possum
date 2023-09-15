@@ -18,6 +18,8 @@ bio.forEach((button) => {
     });
 });
 
+ScrollTrigger.normalizeScroll(true);
+
 let mm = gsap.matchMedia();
 
 //var tl = gsap.timeline();
@@ -27,6 +29,13 @@ gsap.to(".img-bg", {
         scrub: 1
     },
     backgroundPosition: "0% 20%"
+});
+gsap.to(".img-2", {
+    scrollTrigger: {
+        trigger: ".text-screen",
+        scrub: 1
+    },
+    backgroundPosition: "0% 100%"
 });
 
 gsap.to(".intro-video", {
@@ -120,8 +129,86 @@ gsap.from (".note", {
     ease: "power1.inOut",
     stagger: 2
 });
+gsap.from (".arrow", {
+    scrollTrigger: {
+        start: "center center",
+        trigger: ".note",
+        scrub: 1
+    },
+    opacity: 0,
+    duration: 2,
+    ease: "power1.inOut",
+    stagger: 2
+});
 
 // Timeline section
+var point = gsap.utils.toArray('.point');
+
+point.forEach((section) => {
+    gsap.from(section, {
+        scrollTrigger: {
+            trigger: section, 
+            start: 'center center'
+        },
+        opacity: 0,
+        rotation: 0,
+        ease: "power1.inOut"
+    });
+});
+
+var line = gsap.utils.toArray('.line');
+
+line.forEach((section) => {
+    gsap.from(section, {
+        scrollTrigger: {
+            trigger: section, 
+            start: 'top center'
+        },
+        opacity: 0,
+        rotation: 0,
+        ease: "power1.inOut"
+    });
+});
+
+var header = gsap.utils.toArray('.header');
+
+header.forEach((section) => {
+    gsap.from(section, {
+        scrollTrigger: {
+            trigger: section, 
+            start: 'center center'
+        },
+        opacity: 0,
+        rotation: 0,
+        ease: "power1.inOut"
+    });
+});
+
+var handwritten = gsap.utils.toArray('.date');
+
+handwritten.forEach((section) => {
+    gsap.from(section, {
+        scrollTrigger: {
+            trigger: section, 
+            start: 'center center'
+        },
+        opacity: 0,
+        ease: "power1.inOut"
+    });
+});
+
+var timelineContent = gsap.utils.toArray('.content');
+
+timelineContent.forEach((section) => {
+    gsap.from(section, {
+        scrollTrigger: {
+            trigger: section, 
+            start: 'center center'
+        },
+        opacity: 0,
+        ease: "power1.inOut"
+    });
+});
 
 // Crew section
 
