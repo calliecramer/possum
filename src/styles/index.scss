@@ -134,12 +134,22 @@ $desktop: 1024px;
   background-size: cover;
   color: $white;
   height: 0 !important;
-  h1 {
-    margin: 0;
+  .title {
+    mix-blend-mode: overlay;
+    position: absolute;
+    top: 22vh;
+    filter: blur(1px);
+    &:last-of-type {
+      mix-blend-mode: normal;
+      filter: blur(7px);
+      opacity: 0.3;
+    }
   }
   .play-button {
     display: grid;
     transition: 0.25s all;
+    position: absolute;
+    bottom: 8vh;
     &:hover {
       cursor: pointer;
       transform: scale(1.1) rotate(5deg);
@@ -156,6 +166,32 @@ $desktop: 1024px;
       font-size: 2em;
       margin-bottom: 0.5em;
     }
+  }
+}
+
+#video-player {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  background: black;
+  z-index: -25;
+}
+
+#video-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: $white;
+  padding: 1em;
+  z-index: -25;
+  cursor: pointer;
+  transition: 0.25s all;
+  img {
+    max-width: 2em;
+  }
+  &:hover {
+    transform: scale(1.1) rotate(5deg);
   }
 }
 
@@ -299,10 +335,18 @@ $desktop: 1024px;
             cursor: pointer;
             transform: scale(1.1) rotate(5deg);
           }
-          p {
+          .bio-content {
             padding: 0;
             margin: 0;
             border-bottom: 1px solid $white;
+          }
+          .bio-x {
+            position: absolute;
+            bottom: 0.75em;
+            left: 0.8em;
+            margin: 0;
+            max-width: 1em;
+            display: none;
           }
           &.button-1 {
             background-image: url("../images/scribble-1.svg");
@@ -349,11 +393,19 @@ $desktop: 1024px;
         }
       }
       &.open {
-        .lower-third {
-          background-color: #00000090;
-        }
-        .bio {
-          opacity: 1;
+        &.open {
+          .lower-third {
+            background-color: #00000090;
+          }
+          .bio {
+            opacity: 1;
+          }
+          .bio-content {
+            opacity: 0;
+          }
+          .bio-x {
+            display: block !important;
+          }
         }
       }
     }
@@ -444,11 +496,16 @@ $desktop: 1024px;
           height: fit-content;
         }
         .content {
-          padding: 1em 0;
+          padding: 1em;
           max-width: 800px;
+          width: fit-content;
           position: relative;
           opacity: 1;
+          margin-bottom: 1em;
+          border-radius: 0.5em;
+          text-align: center;
           .text {
+            text-align: left;
             h4, p {
               margin: 0;
             }
@@ -553,6 +610,7 @@ $desktop: 1024px;
             background: $highlight;
             font-weight: 300;
             font-size: 0.8rem;
+            color: $black;
           }
         }
       }

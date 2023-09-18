@@ -10,7 +10,8 @@
   "parserOptions": {
     "ecmaVersion": 8,
     "sourceType": "module",
-    "requireConfigFile": false
+    "requireConfigFile": false,
+    "no-unused-vars": false
   },
   "rules": {
     "semi": 2

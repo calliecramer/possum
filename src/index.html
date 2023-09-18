@@ -10,12 +10,23 @@
   <div class="img-bg"></div>
   <div class="img-bg img-2"></div>
   <div class="intro-video screen">
-    <h1>POSSUM</h1>
+    <img class="title" src="images/possum-title.svg" alt="POSSUM">
+    <img class="title" src="images/possum-title.svg" alt="POSSUM">
     <div class="play-button">
       <img alt="cauliflower illustration" src="images/cauliflower.png">
       <p class="handwritten">play</p>
     </div>
   </div>
+  <div id="video-close">
+    <img src="images/x-white.png" alt="white x icon">
+  </div>
+  <video
+    id="video-player"
+    controls>
+  <source src="//vjs.zencdn.net/v/oceans.mp4" type="video/mp4"></source>
+  <source src="//vjs.zencdn.net/v/oceans.webm" type="video/webm"></source>
+  <source src="//vjs.zencdn.net/v/oceans.ogv" type="video/ogg"></source>
+</video>
   <div class="screen text-screen">
     <div id="text-1">
       <div class="width-container">
@@ -80,7 +91,8 @@
               <p>manipulated by puppeteer MERY Y.Y. CHEUNG</p>
             </div>
             <button class="bio-toggle button-1" data-target="possum">
-              <p>bio</p>
+              <p class="bio-content">bio</p>
+              <img class="bio-x" src="images/x-white.png" alt="white x icon">
             </button>
           </div>
           <div class="bio">
@@ -97,7 +109,8 @@
               <p>played by HANNAH SHEALY</p>
             </div>
             <button class="bio-toggle button-2" data-target="annabella">
-              <p>bio</p>
+              <p class="bio-content">bio</p>
+              <img class="bio-x" src="images/x-white.png" alt="white x icon">
             </button>
           </div>
           <div class="bio">
@@ -114,7 +127,8 @@
               <p>played by MISHA BROOKS</p>
             </div>
             <button class="bio-toggle button-3" data-target="pinecone">
-              <p>bio</p>
+              <p class="bio-content">bio</p>
+              <img class="bio-x" src="images/x-white.png" alt="white x icon">
             </button>
           </div>
           <div class="bio">
@@ -131,7 +145,8 @@
               <p>played by MICHELLE DAVIS</p>
             </div>
             <button class="bio-toggle button-1 flip" data-target="tilly">
-              <p>bio</p>
+              <p class="bio-content">bio</p>
+              <img class="bio-x" src="images/x-white.png" alt="white x icon">
             </button>
           </div>
           <div class="bio">
@@ -148,7 +163,8 @@
               <p>GILBERT DIEGO SANCHEZ</p>
             </div>
             <button class="bio-toggle button-2 flip" data-target="hadley">
-              <p>bio</p>
+              <p class="bio-content">bio</p>
+              <img class="bio-x" src="images/x-white.png" alt="white x icon">
             </button>
           </div>
           <div class="bio">
@@ -165,7 +181,8 @@
               <p>played by SOPHIE SAGAN-GUTHERZ</p>
             </div>
             <button class="bio-toggle button-3 flip" data-target="blaze">
-              <p>bio</p>
+              <p class="bio-content">bio</p>
+              <img class="bio-x" src="images/x-white.png" alt="white x icon">
             </button>
           </div>
           <div class="bio">
@@ -200,12 +217,12 @@
                   <p>Sophie Sagan-Gutherz & Daisy Rosato continue to tighten the script, strengthening the story and collaborating with other department heads to make sure everything is accounted for and the script is ready to be shot.</p>
                 </div>
               </div>
-              <div class="content flex">
+              <div class="content">
                 <div class="text">
                   <h4>Location Scouting</h4>
                   <p>Daisy & Zach Sky (director of photography) visit potential shooting locations in The Berkshires, landing on a location in Otis, MA.</p>
                 </div>
-                <img src="images/possum.jpg">
+                <img src="images/overhead.jpg" alt="overhead view of shooting location">
               </div>
               <div class="content">
                 <div class="text">
@@ -213,12 +230,12 @@
                   <p>Jackie Monoson (producer) joins in April & leads the way in filling out the POSSUM team, from department heads to additional supporting crew; Leah Shapiro (casting director) works on casting and finalizes deals.</p>
                 </div>
               </div>
-              <div class="content flex">
+              <div class="content">
                 <div class="text">
                   <h4>Puppet Build</h4>
                   <p>The extraordinary POSSUM puppet-maker Matthew Lish designs and builds the titular character.</p>  
                 </div>
-                <img src="images/possum.jpg">
+                <img src="images/possum-schematic.jpg" alt="Possum Schematic">
               </div>
             </div>
           </div>
@@ -238,7 +255,7 @@
                 <div class="text">
                   <h4>Shooting on location in Otis, MA.</h4>
                 </div>
-                <img src="images/barn-illo.png">
+                <img src="images/barn-illo.png" alt="Barn Illustration">
               </div>
             </div>
           </div>

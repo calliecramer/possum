@@ -49,6 +49,40 @@ gsap.to(".intro-video", {
         opacity: 0
     });  
 
+let video = document.querySelector('video');
+addEventListener("scroll", () => {
+    video.pause();
+});
+
+let playButton = document.querySelector('.play-button');
+let videoPlayer = document.getElementById('video-player');
+let videoClose=document.getElementById("video-close");
+
+playButton.addEventListener('click', () => {
+    videoPlayer.style.zIndex="20";
+    videoPlayer.parentElement.style.zIndex="20";
+    videoClose.style.zIndex="25";
+    video.play();
+});
+
+videoClose.addEventListener('click', () => {
+    videoPlayer.style.zIndex="-25";
+    videoPlayer.parentElement.style.zIndex="-25";
+    videoClose.style.zIndex="-25";
+    video.pause();
+});
+
+gsap.to("#video-player", {
+    scrollTrigger: {
+        trigger: "#video-player",
+        start: "top top",
+        end: "+=200",
+        scrub: 1,
+        pin: true,
+    },
+    opacity: 0
+});  
+
 // logline and why text section
 gsap.from(".logline", {
     scrollTrigger: {
