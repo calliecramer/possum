@@ -1,22 +1,26 @@
 /* Colors */
 $black: #000;
 $white: #fff;
-$light: #a33434;
-$highlight: #bdb38b;
+$light: #2d030f;
+$highlight: #9f5380;
 
 /* Typography */
 @import "/node_modules/rfs/scss";
 @import url("https://fonts.googleapis.com/css2?family=Lalezar&family=Reenie+Beanie&family=The+Girl+Next+Door&family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+@import url("https://use.typekit.net/iay8nzn.css");
+
 h1 {
   font-family: "The Girl Next Door", cursive;
 }
 
 h2, h3, h4, h5, h6 {
-  font-family: "Lalezar", sans-serif;
+  font-family: "crayonette-djr", sans-serif;
 }
 
 p, ul, li {
-  font-family: "Work Sans", sans-serif;
+  font-family: bookmania, serif;
+  font-weight: 400;
+  font-style: normal;
   line-height: 1.25;
 }
 
@@ -35,14 +39,12 @@ body {
   }
   h2 {
     @include font-size(7rem);
-    -webkit-text-stroke: 0.25px $highlight;
-    color: transparent;
+    color: $highlight;
     margin: 0;
   }
   h3 {
     @include font-size(4rem);
-    -webkit-text-stroke: 0.25px $highlight;
-    color: transparent;
+    color: $highlight;
     margin: 0;
   }
   p {
@@ -96,17 +98,11 @@ $desktop: 1024px;
 .light-bg {
   background-color: $light;
   color: $black;
-  h2 {
-    -webkit-text-stroke: 0.25px $white;
-  }
 }
 
 .dark-bg {
   background-color: $black;
   color: $white;
-  h2 {
-    -webkit-text-stroke: 0.25px $highlight;
-  }
 }
 
 .texture {
@@ -130,20 +126,13 @@ $desktop: 1024px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-image: url("../images/possum-placeholder.png");
+  background-image: url("../images/intro-ss.png");
   background-size: cover;
   color: $white;
   height: 0 !important;
   .title {
-    mix-blend-mode: overlay;
-    position: absolute;
-    top: 22vh;
-    filter: blur(1px);
-    &:last-of-type {
-      mix-blend-mode: normal;
-      filter: blur(7px);
-      opacity: 0.3;
-    }
+    width: 100%;
+    mix-blend-mode: multiply;
   }
   .play-button {
     display: grid;
@@ -165,6 +154,8 @@ $desktop: 1024px;
       justify-self: center;
       font-size: 2em;
       margin-bottom: 0.5em;
+      color: $highlight;
+      padding-top: 10px;
     }
   }
 }
@@ -224,7 +215,7 @@ $desktop: 1024px;
 }
 
 .img-bg {
-  background-image: url("../images/background-red.png");
+  background-image: url("../images/background-red-2.png");
   background-size: cover;
   background-position: top;
   width: 100vw;
@@ -233,9 +224,9 @@ $desktop: 1024px;
   z-index: -20;
 }
 .img-2 {
-  background-image: url("../images/background-white.png");
+  background-image: url("../images/background-red-2.png");
   opacity: 0.6;
-  mix-blend-mode: difference;
+  mix-blend-mode: normal;
 }
 
 .comps {
@@ -262,6 +253,9 @@ $desktop: 1024px;
         z-index: 10;
       }
     }
+    .poster-text {
+      color: $white;
+    }
     @include tablet-up {
       grid-template-columns: repeat(3, 1fr);
       img {
@@ -286,6 +280,7 @@ $desktop: 1024px;
       background-size: cover;
       background-position: center;
       border-radius: 0.5em;
+      border: 3px solid $highlight;
       position: relative;
       margin-top: 2em;
       .note {
@@ -309,13 +304,10 @@ $desktop: 1024px;
         align-items: flex-end;
         justify-content: space-between;
         width: 100%;
-        background: rgba(0, 0, 0, 10%);
-        background: linear-gradient(0deg, rgba(0, 0, 0, 30%) 0%, rgba(0, 0, 0, 0%) 90%);
         transition: 0.25s all;
         .name {
           padding: 5px;
           h3 {
-            -webkit-text-stroke: 0.25px $white;
             mix-blend-mode: overlay;
             position: relative;
             bottom: -12px;
@@ -331,6 +323,7 @@ $desktop: 1024px;
           margin: 1em;
           color: $white;
           transition: 0.25s all;
+          transform: scale(1) rotate(0deg);
           &:hover {
             cursor: pointer;
             transform: scale(1.1) rotate(5deg);
@@ -441,6 +434,7 @@ $desktop: 1024px;
       display: grid;
       grid-template-columns: 5% auto;
       align-items: center;
+      color: $white;
       .point {
         padding: 1em;
         img {
@@ -452,17 +446,18 @@ $desktop: 1024px;
         gap: 1em;
         align-items: center;
         h3 {
-          color: $white;
-          background-color: $black;
+          color: $black;
+          background-color: $highlight;
           -webkit-text-stroke: 0 transparent;
           width: fit-content;
           padding: 0.25em;
-          font-family: "Work Sans", sans-serif;
+          font-family: bookmania, serif;
           font-weight: 300;
           @include font-size(1.5rem);
         }
         p {
           margin: 0;
+          color: $white;
         }
         .date {
           opacity: 1;
@@ -508,9 +503,11 @@ $desktop: 1024px;
             text-align: left;
             h4, p {
               margin: 0;
+              color: $white;
             }
             h4 {
-              font-family: "Work Sans", sans-serif;
+              font-family: bookmania, serif;
+              font-weight: 500;
               font-weight: normal;
             }
             p {
@@ -528,6 +525,7 @@ $desktop: 1024px;
             line-height: 0;
             position: absolute;
             left: -1em;
+            color: $white;
           }
         }
         .flex {
@@ -749,10 +747,21 @@ $desktop: 1024px;
   }
 }
 
+#text-2 {
+  .text-block {
+    display: flex;
+    align-items: center;
+    .logo {
+      padding: 0 1em;
+    }
+  }
+}
+
 .footer {
   padding: 0.5em 1em;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   a {
     color: $white;
   }
