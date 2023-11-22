@@ -1,8 +1,9 @@
 /* Colors */
 $black: #000;
-$white: #fff;
-$light: #2d030f;
-$highlight: #9f5380;
+$white: #fffff2;
+$light: #931e5d;
+$dark: #4a1622;
+$highlight: #9f5480;
 
 /* Typography */
 @import "/node_modules/rfs/scss";
@@ -17,19 +18,15 @@ h2, h3, h4, h5, h6 {
   font-family: "crayonette-djr", sans-serif;
 }
 
-p, ul, li {
+a, p, ul, li {
   font-family: bookmania, serif;
   font-weight: 400;
   font-style: normal;
-  line-height: 1.25;
+  line-height: 1.5;
 }
 
 .handwritten {
   font-family: "Reenie Beanie", cursive;
-}
-
-a {
-  color: $highlight;
 }
 
 body {
@@ -46,12 +43,23 @@ body {
     @include font-size(4rem);
     color: $highlight;
     margin: 0;
+    padding-bottom: 0.25em;
   }
   p {
     @include font-size(1rem);
   }
   .handwritten {
-    @include font-size(1.25rem);
+    @include font-size(1.75rem);
+    line-height: 1;
+    text-shadow: 0 0 10px $dark;
+  }
+  a {
+    color: $highlight;
+    line-height: 1;
+    transition: 0.25s all;
+    &:hover {
+      color: $white;
+    }
   }
 }
 
@@ -96,21 +104,17 @@ $desktop: 1024px;
 }
 
 .light-bg {
-  background-color: $light;
-  color: $black;
+  background-color: #9f548090;
+  color: $white;
 }
 
 .dark-bg {
-  background-color: $black;
-  color: $white;
+  color: $highlight;
 }
 
 .texture {
   &.top {
     margin-bottom: -4px;
-  }
-  &.bottom {
-    margin-top: -4px;
   }
   &.light {
     filter: invert(13%) sepia(47%) saturate(7310%) hue-rotate(355deg) brightness(93%) contrast(64%);
@@ -121,10 +125,24 @@ $desktop: 1024px;
   }
 }
 
-.intro-video {
+.no-scroll {
+  overflow: hidden;
+}
+
+#loading {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 100;
+  background: $dark;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.intro-video {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   flex-direction: column;
   background-image: url("../images/intro-ss.png");
   background-size: cover;
@@ -137,8 +155,8 @@ $desktop: 1024px;
   .play-button {
     display: grid;
     transition: 0.25s all;
-    position: absolute;
     bottom: 8vh;
+    margin-bottom: 2em;
     &:hover {
       cursor: pointer;
       transform: scale(1.1) rotate(5deg);
@@ -154,7 +172,7 @@ $desktop: 1024px;
       justify-self: center;
       font-size: 2em;
       margin-bottom: 0.5em;
-      color: $highlight;
+      color: $dark;
       padding-top: 10px;
     }
   }
@@ -192,25 +210,25 @@ $desktop: 1024px;
   p {
     margin: 0;
   }
+  #text-1 {
+    display: flex;
+  }
   .width-container {
-    padding: 10em 2em 2em;
-    @include phone-up {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-    }
-    div {
+    padding: 14em 2em 2em;
+    .text-block {
+      max-width: 500px;
+      text-align: center;
       padding-bottom: 2em;
-      &:first-child {
-        grid-row: 1;
-        grid-column: 1 / span 2;
+      h3 {
+        font-size: 5em;
       }
-      &:last-child {
-        text-align: right;
-        grid-row: 2;
-        grid-column: 2 / span 2;
+      p {
+        font-size: 1.25rem;
       }
     }
+  }
+  .logline, .why {
+    opacity: 1;
   }
 }
 
@@ -229,7 +247,32 @@ $desktop: 1024px;
   mix-blend-mode: normal;
 }
 
+.menu {
+  gap: 1em;
+  display: flex;
+  align-items: center;
+  margin: 1em;
+  div {
+    min-width: 25px;
+  }
+  .instagram {
+    path {
+      fill: #9f5480;
+      transition: 0.25s all;
+    }
+    &:hover {
+      path {
+        fill: $white;
+      }
+    }
+  }
+}
+
 .comps {
+  h2 {
+    text-align: center;
+    color: $white;
+  }
   .poster-container {
     display: grid;
     grid-template-columns: 1fr;
@@ -242,6 +285,9 @@ $desktop: 1024px;
         max-width: 100%;
         max-height: 25em;
         grid-area: 1/1;
+        border-radius: 0.5em;
+        border: 5px solid $white;
+        background: white;
       }
       .overlay {
         transition: 0.25s;
@@ -255,6 +301,9 @@ $desktop: 1024px;
     }
     .poster-text {
       color: $white;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
     }
     @include tablet-up {
       grid-template-columns: repeat(3, 1fr);
@@ -266,6 +315,14 @@ $desktop: 1024px;
 }
 
 .residents {
+  h2 {
+    text-align: center;
+    padding-bottom: 0.5em;
+    color: $white;
+  }
+  .handwritten {
+    text-shadow: 0 0 10px $black;
+  }
   .residents-container {
     display: grid;
     grid-template-columns: 1fr;
@@ -274,15 +331,16 @@ $desktop: 1024px;
       grid-template-columns: repeat(2, 1fr);
     }
     .resident {
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: repeat(4, 1fr);
       background-size: cover;
       background-position: center;
+      background-color: #000c;
       border-radius: 0.5em;
-      border: 3px solid $highlight;
+      border: 5px solid $highlight;
       position: relative;
       margin-top: 2em;
+      color: $white;
+      transition: 0.25s all;
+      min-height: 375px;
       .note {
         position: absolute;
         top: -2.5em;
@@ -298,73 +356,71 @@ $desktop: 1024px;
         top: -0.5em;
         left: 45%;
       }
-      .lower-third {
-        grid-area: 4/1;
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        width: 100%;
-        transition: 0.25s all;
-        .name {
-          padding: 5px;
-          h3 {
-            mix-blend-mode: overlay;
-            position: relative;
-            bottom: -12px;
-          }
-          p {
-            margin: 0;
-          }
+      h3 {
+        mix-blend-mode: plus-lighter;
+        position: absolute;
+        top: 0;
+        left: 6px;
+      }
+      .name {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 5px;
+        padding-left: 1em;
+        p {
+          margin: 0;
         }
-        button {
-          background-repeat: no-repeat;
-          background-color: transparent;
-          border: none;
-          margin: 1em;
-          color: $white;
-          transition: 0.25s all;
-          transform: scale(1) rotate(0deg);
-          &:hover {
-            cursor: pointer;
-            transform: scale(1.1) rotate(5deg);
-          }
-          .bio-content {
-            padding: 0;
-            margin: 0;
-            border-bottom: 1px solid $white;
-          }
-          .bio-x {
-            position: absolute;
-            bottom: 0.75em;
-            left: 0.8em;
-            margin: 0;
-            max-width: 1em;
-            display: none;
-          }
-          &.button-1 {
-            background-image: url("../images/scribble-1.svg");
-            padding: 0.5em 0.75em 0.75em 0.5em;
-          }
-          &.button-2 {
-            background-image: url("../images/scribble-2.svg");
-            padding: 0.5em 0.75em 0.75em;
-          }
-          &.button-3 {
-            background-image: url("../images/scribble-3.svg");
-            padding: 0.75em 0.75em 0.75em 0.5em;
-          }
+      }
+      button {
+        position: absolute;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        border: none;
+        color: $white;
+        transition: 0.25s all;
+        transform: scale(1) rotate(0deg);
+        margin: 0.5em;
+        padding: 1.25em;
+        bottom: 0;
+        right: 0;
+        z-index: 10;
+        &:hover {
+          cursor: pointer;
+          transform: scale(1.1) rotate(5deg);
+        }
+        .bio-content {
+          padding: 0;
+          margin: 0;
+        }
+        .bio-x {
+          position: absolute;
+          bottom: 0.75em;
+          left: 0.8em;
+          margin: 0;
+          max-width: 1em;
+          display: none;
+        }
+        &.button-1 {
+          background-image: url("../images/scribble-1.svg");
+        }
+        &.button-2 {
+          background-image: url("../images/scribble-2.svg");
+        }
+        &.button-3 {
+          background-image: url("../images/scribble-3.svg");
         }
       }
       .bio {
         opacity: 0;
-        grid-area: span 3/1;
-        background: #00000090;
         padding: 1em;
         padding-bottom: 0;
         overflow: auto;
         display: block;
         text-align: center;
         transition: 0.25s all;
+        z-index: 10;
+        border-radius: 3px;
         img {
           max-height: 150px;
           padding-bottom: 1em;
@@ -372,12 +428,12 @@ $desktop: 1024px;
         p {
           margin: 0;
           font-weight: 300;
+          padding-bottom: 2em;
           @include font-size(0.85rem);
         }
         @include phone-up {
           text-align: left;
-          padding: 2em;
-          padding-bottom: 0;
+          padding: 5em 2em 2em;
           display: flex;
           gap: 2em;
           img {
@@ -386,29 +442,24 @@ $desktop: 1024px;
         }
       }
       &.open {
-        &.open {
-          .lower-third {
-            background-color: #00000090;
-          }
-          .bio {
-            opacity: 1;
-          }
-          .bio-content {
-            opacity: 0;
-          }
-          .bio-x {
-            display: block !important;
-          }
+        background-blend-mode: color;
+        .bio {
+          opacity: 1;
+        }
+        .bio-content {
+          opacity: 0;
+        }
+        .name {
+          opacity: 0;
+        }
+        .bio-x {
+          display: block !important;
         }
       }
     }
     #possum {
       background-image: url("../images/possum-ss.png");
       background-position: left;
-      h3 {
-        mix-blend-mode: normal;
-        opacity: 0.4;
-      }
     }
     #annabella {
       background-image: url("../images/annabella.png");
@@ -428,7 +479,18 @@ $desktop: 1024px;
   }
 }
 
+.timeline {
+  h2 {
+    color: $white;
+    text-align: center;
+    padding-bottom: 0.5em;
+  }
+}
+
 .timeline-container {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
   .timeline-item {
     .timeline-header {
       display: grid;
@@ -436,7 +498,7 @@ $desktop: 1024px;
       align-items: center;
       color: $white;
       .point {
-        padding: 1em;
+        margin-right: 1em;
         img {
           max-width: 100%;
         }
@@ -445,12 +507,13 @@ $desktop: 1024px;
         display: flex;
         gap: 1em;
         align-items: center;
+        margin: 2em 0;
         h3 {
-          color: $black;
-          background-color: $highlight;
+          color: $white;
+          background-color: $dark;
           -webkit-text-stroke: 0 transparent;
           width: fit-content;
-          padding: 0.25em;
+          padding: 0.4em 0.4em 0.25em;
           font-family: bookmania, serif;
           font-weight: 300;
           @include font-size(1.5rem);
@@ -492,18 +555,19 @@ $desktop: 1024px;
         }
         .content {
           padding: 1em;
-          max-width: 800px;
-          width: fit-content;
+          max-width: 600px;
+          width: 100%;
           position: relative;
           opacity: 1;
           margin-bottom: 1em;
           border-radius: 0.5em;
           text-align: center;
+          background: $white;
           .text {
             text-align: left;
             h4, p {
               margin: 0;
-              color: $white;
+              color: $dark;
             }
             h4 {
               font-family: bookmania, serif;
@@ -524,7 +588,7 @@ $desktop: 1024px;
             font-size: 2em;
             line-height: 0;
             position: absolute;
-            left: -1em;
+            left: -0.7em;
             color: $white;
           }
         }
@@ -573,7 +637,7 @@ $desktop: 1024px;
         margin-bottom: 1em;
       }
       h2 {
-        line-height: 0.9;
+        line-height: 1;
         padding: 0;
         @include tablet-up {
           @include font-size(5rem);
@@ -589,7 +653,7 @@ $desktop: 1024px;
       background-size: cover;
       background-position: center;
       min-height: 400px;
-      border: 3px solid $highlight;
+      border: 5px solid $highlight;
       border-radius: 0.5em;
       transition: 0.25s all;
       cursor: default;
@@ -599,16 +663,16 @@ $desktop: 1024px;
         position: relative;
         p {
           width: fit-content;
-          padding: 0.25em;
+          padding: 0.4em 0.4em 0.25em;
           position: absolute;
           &:first-child {
-            background: $black;
+            background: $dark;
+            color: $white;
           }
           &:last-of-type {
             background: $highlight;
-            font-weight: 300;
             font-size: 0.8rem;
-            color: $black;
+            color: $white;
           }
         }
       }
@@ -619,10 +683,12 @@ $desktop: 1024px;
           background-repeat: no-repeat;
           background-color: transparent;
           border: none;
-          margin: 1em;
+          margin: 0.25em;
+          padding: 1.25em;
           color: $white;
           transition: 0.25s all;
           position: relative;
+          filter: drop-shadow(0 0 10px #9f548090);
           &:hover {
             cursor: pointer;
             transform: scale(1.1) rotate(5deg);
@@ -630,7 +696,6 @@ $desktop: 1024px;
           .bio-content {
             padding: 0;
             margin: 0;
-            border-bottom: 1px solid $white;
           }
           .bio-x {
             position: absolute;
@@ -641,16 +706,13 @@ $desktop: 1024px;
             display: none;
           }
           &.button-1 {
-            background-image: url("../images/scribble-1.svg");
-            padding: 0.5em 0.75em 0.75em 0.5em;
+            background-image: url("../images/scribble-1-pink.svg");
           }
           &.button-2 {
-            background-image: url("../images/scribble-2.svg");
-            padding: 0.5em 0.75em 0.75em;
+            background-image: url("../images/scribble-2-pink.svg");
           }
           &.button-3 {
-            background-image: url("../images/scribble-3.svg");
-            padding: 0.75em 0.75em 0.75em 0.5em;
+            background-image: url("../images/scribble-3-pink.svg");
           }
         }
       }
@@ -658,14 +720,14 @@ $desktop: 1024px;
         grid-row: 1/5;
         grid-column: 1/1;
         opacity: 0;
-        background: #00000090;
+        background: #000c;
         padding: 1em;
         padding-bottom: 0;
         overflow: auto;
         display: block;
         text-align: center;
         transition: 0.25s all;
-        border-radius: 0.5em;
+        border-radius: 0.25em;
         z-index: 3;
         img {
           max-height: 150px;
@@ -674,6 +736,7 @@ $desktop: 1024px;
         p {
           margin: 0;
           font-weight: 300;
+          color: $white;
           @include font-size(0.7rem);
         }
         @include phone-up {
@@ -689,7 +752,7 @@ $desktop: 1024px;
       }
       &.open {
         .lower-third {
-          background-color: #00000090;
+          background-color: #000c;
         }
         .bio {
           opacity: 1;
@@ -720,10 +783,22 @@ $desktop: 1024px;
         background-image: url("../images/jackie.png");
       }
     }
-    #amanda {
-      background-image: url("../images/amanda-texture.png");
+    #marissa {
+      background-image: url("../images/marissa-headshot.jpg");
       &:hover {
-        background-image: url("../images/amanda.png");
+        background-image: url("../images/marissa-headshot.jpg");
+      }
+    }
+    #mary {
+      background-image: url("../images/mary-headshot.jpg");
+      &:hover {
+        background-image: url("../images/mary-headshot.jpg");
+      }
+    }
+    #laura {
+      background-image: url("../images/laura-headshot.png");
+      &:hover {
+        background-image: url("../images/laura-headshot.png");
       }
     }
     #leah {
@@ -744,15 +819,26 @@ $desktop: 1024px;
         background-image: url("../images/polyester.png");
       }
     }
+    #ariel {
+      background-image: url("../images/ariel-headshot.jpg");
+      &:hover {
+        background-image: url("../images/ariel-headshot.jpg");
+      }
+    }
   }
 }
 
-#text-2 {
-  .text-block {
-    display: flex;
-    align-items: center;
-    .logo {
-      padding: 0 1em;
+.logos {
+  display: flex;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  padding: 5em 2em !important;
+  gap: 4em;
+  .logo {
+    max-width: 250px;
+    img {
+      max-width: 100%;
     }
   }
 }
