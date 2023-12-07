@@ -9,6 +9,7 @@
     "rule-empty-line-before": null,
     "declaration-empty-line-before": null,
     "color-function-notation": null,
-    "no-descending-specificity": null
+    "no-descending-specificity": null,
+    "no-duplicate-selectors": null
   }
 }

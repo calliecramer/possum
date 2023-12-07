@@ -60,13 +60,19 @@ body {
     &:hover {
       color: $white;
     }
+    &.white {
+      color: $white;
+      &:hover {
+        color: $highlight;
+      }
+    }
   }
 }
 
 /* Screen Sizing */
 $phone: 640px;
 $tablet: 768px;
-$desktop: 1024px;
+$desktop: 1200px;
 
 @mixin phone-up {
   @media (min-width: $phone) { @content; }
@@ -144,16 +150,19 @@ $desktop: 1024px;
   align-items: center;
   justify-content: flex-end;
   flex-direction: column;
+  color: $white;
   background-image: url("../images/intro-ss.png");
   background-size: cover;
-  color: $white;
   height: 0 !important;
   .title {
-    width: 100%;
-    mix-blend-mode: multiply;
+    max-width: 100%;
+    height: 100%;
+    margin: 2em 0;
+    mix-blend-mode: color-burn;
   }
   .play-button {
-    display: grid;
+    /* display: grid; */
+    display: none;
     transition: 0.25s all;
     bottom: 8vh;
     margin-bottom: 2em;
@@ -174,6 +183,11 @@ $desktop: 1024px;
       margin-bottom: 0.5em;
       color: $dark;
       padding-top: 10px;
+    }
+  }
+  .menu {
+    a {
+      @include font-size(1.25rem);
     }
   }
 }
@@ -257,15 +271,49 @@ $desktop: 1024px;
   }
   .instagram {
     path {
-      fill: #9f5480;
+      fill: $white;
       transition: 0.25s all;
     }
     &:hover {
       path {
-        fill: $white;
+        fill: $highlight;
       }
     }
   }
+}
+
+#footprints-container {
+  position: fixed;
+  width: 100%;
+  top: 1em;
+  .footprints {
+    position: relative;
+    .footprint {
+      max-width: 300px;
+      transform: rotate(235deg);
+      position: absolute;
+      opacity: 0;
+    }
+    .footprint-2 {
+      left: 19em;
+      top: 1em;
+      rotate: (100deg);
+    }
+    .footprint-3 {
+      left: 38em;
+      top: 7em;
+      transform: rotate(220deg);
+    }
+    .footprint-4 {
+      left: 55em;
+      top: 7em;
+      transform: rotate(-18deg);
+    }
+  }
+}
+
+.footprint-2 {
+  left: 1em;
 }
 
 .comps {
@@ -316,9 +364,14 @@ $desktop: 1024px;
 
 .residents {
   h2 {
-    text-align: center;
-    padding-bottom: 0.5em;
+    text-align: right;
     color: $white;
+    position: absolute;
+    right: 0;
+    top: -1em;
+  }
+  .width-container {
+    position: relative;
   }
   .handwritten {
     text-shadow: 0 0 10px $black;
@@ -341,11 +394,23 @@ $desktop: 1024px;
       color: $white;
       transition: 0.25s all;
       min-height: 375px;
+      &:hover {
+        .name, .note, .arrow {
+          opacity: 1;
+          transition: 0.25s all;
+        }
+      }
+      &.open {
+        .name, .note, .arrow, h3 {
+          opacity: 0;
+        }
+      }
       .note {
         position: absolute;
         top: -2.5em;
         width: 100%;
         text-align: center;
+        opacity: 0;
         &.long {
           top: -4em;
         }
@@ -355,6 +420,7 @@ $desktop: 1024px;
         max-height: 40px;
         top: -0.5em;
         left: 45%;
+        opacity: 0;
       }
       h3 {
         mix-blend-mode: plus-lighter;
@@ -368,6 +434,7 @@ $desktop: 1024px;
         left: 0;
         padding: 5px;
         padding-left: 1em;
+        opacity: 0;
         p {
           margin: 0;
         }
@@ -392,20 +459,26 @@ $desktop: 1024px;
         .bio-content {
           padding: 0;
           margin: 0;
+          font-size: 1.25em;
+          font-weight: 600;
         }
         .bio-x {
           position: absolute;
-          bottom: 0.75em;
-          left: 0.8em;
+          bottom: 1.5em;
           margin: 0;
           max-width: 1em;
           display: none;
         }
         &.button-1 {
-          background-image: url("../images/scribble-1.svg");
+          background-image: url("../images/scribble-2.svg");
         }
         &.button-2 {
-          background-image: url("../images/scribble-2.svg");
+          background-image: url("../images/cauliflower.png");
+          background-size: cover;
+          background-position: bottom;
+          p, .bio-x {
+            color: $black;
+          }
         }
         &.button-3 {
           background-image: url("../images/scribble-3.svg");
@@ -433,7 +506,7 @@ $desktop: 1024px;
         }
         @include phone-up {
           text-align: left;
-          padding: 5em 2em 2em;
+          padding: 2em;
           display: flex;
           gap: 2em;
           img {
@@ -601,15 +674,14 @@ $desktop: 1024px;
 }
 
 .crew-screen {
-  @include phone-up {
-    .crew-title-mobile {
-      display: none;
-    }
+  .crew-top img {
+    margin-bottom: -14em;
   }
   .crew-container {
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 0.5em;
+    padding-top: 0;
     @include phone-up {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -618,34 +690,6 @@ $desktop: 1024px;
     }
     @include desktop-up {
       grid-template-columns: repeat(4, 1fr);
-    }
-    .crew-title {
-      display: none;
-      @include phone-up {
-        display: flex;
-        align-items: center;
-        align-self: baseline;
-      }
-      @include tablet-up {
-        writing-mode: vertical-rl;
-        text-orientation: mixed;
-        transform: rotate(180deg);
-        align-self: center;
-      }
-      @include desktop-up {
-        margin-left: 1em;
-        margin-bottom: 1em;
-      }
-      h2 {
-        line-height: 1;
-        padding: 0;
-        @include tablet-up {
-          @include font-size(5rem);
-        }
-        @include desktop-up {
-          @include font-size(7rem);
-        }
-      }
     }
     .crew {
       display: grid;
@@ -688,7 +732,6 @@ $desktop: 1024px;
           color: $white;
           transition: 0.25s all;
           position: relative;
-          filter: drop-shadow(0 0 10px #9f548090);
           &:hover {
             cursor: pointer;
             transform: scale(1.1) rotate(5deg);
@@ -696,6 +739,8 @@ $desktop: 1024px;
           .bio-content {
             padding: 0;
             margin: 0;
+            font-size: 1.25em;
+            font-weight: 600;
           }
           .bio-x {
             position: absolute;
@@ -706,10 +751,15 @@ $desktop: 1024px;
             display: none;
           }
           &.button-1 {
-            background-image: url("../images/scribble-1-pink.svg");
+            background-image: url("../images/scribble-2.svg");
           }
           &.button-2 {
-            background-image: url("../images/scribble-2-pink.svg");
+            background-image: url("../images/cauliflower.png");
+            background-size: cover;
+            background-position: bottom;
+            p, .bio-x {
+              color: $black;
+            }
           }
           &.button-3 {
             background-image: url("../images/scribble-3-pink.svg");
@@ -766,73 +816,58 @@ $desktop: 1024px;
       }
     }
     #daisy {
-      background-image: url("../images/daisy-texture.png");
-      &:hover {
-        background-image: url("../images/daisy.png");
-      }
+      background-image: url("../images/daisy.png");
     }
     #soph {
-      background-image: url("../images/soph-alt-texture.png");
-      &:hover {
-        background-image: url("../images/soph-alt.png");
-      }
+      background-image: url("../images/soph-alt.png");
     }
     #jackie {
-      background-image: url("../images/jackie-texture.png");
-      &:hover {
-        background-image: url("../images/jackie.png");
-      }
+      background-image: url("../images/jackie.png");
     }
     #marissa {
       background-image: url("../images/marissa-headshot.jpg");
-      &:hover {
-        background-image: url("../images/marissa-headshot.jpg");
-      }
     }
     #mary {
       background-image: url("../images/mary-headshot.jpg");
-      &:hover {
-        background-image: url("../images/mary-headshot.jpg");
-      }
     }
     #laura {
       background-image: url("../images/laura-headshot.png");
-      &:hover {
-        background-image: url("../images/laura-headshot.png");
-      }
     }
     #leah {
-      background-image: url("../images/leah-texture.png");
-      &:hover {
-        background-image: url("../images/leah.png");
-      }
+      background-image: url("../images/leah.png");
     }
     #zack {
-      background-image: url("../images/zach-texture.png");
-      &:hover {
-        background-image: url("../images/zach.png");
-      }
+      background-image: url("../images/zach.png");
     }
     #poly {
-      background-image: url("../images/polyester-texture.png");
-      &:hover {
-        background-image: url("../images/polyester.png");
-      }
+      background-image: url("../images/polyester.png");
     }
     #ariel {
       background-image: url("../images/ariel-headshot.jpg");
-      &:hover {
-        background-image: url("../images/ariel-headshot.jpg");
-      }
+    }
+    #wren {
+      background-image: url("../images/wren.jpg");
     }
   }
 }
+.buzz {
+  h2 {
+    text-align: center;
+    padding-bottom: 0.5em;
+    color: $white;
+  }
+  min-height: auto;
+}
+
+.buzz-bottom img {
+  margin-bottom: -8em;
+}
 
 .logos {
-  display: flex;
+  display: grid;
   align-self: center;
   align-items: center;
-  justify-content: center;
+  justify-items: center;
   padding: 5em 2em !important;
   gap: 4em;
   .logo {
@@ -841,13 +876,17 @@ $desktop: 1024px;
       max-width: 100%;
     }
   }
+  @include phone-up {
+    grid-template-columns: 2fr 2fr;
+  }
+  @include desktop-up {
+    grid-template-columns: 2fr 2fr 2fr 2fr;
+  }
 }
 
 .footer {
   padding: 0.5em 1em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  text-align: center;
   a {
     color: $white;
   }

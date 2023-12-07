@@ -33,14 +33,14 @@ gsap.to(".img-bg", {
         trigger: ".text-screen",
         scrub: 1
     },
-    backgroundPosition: "0% 20%"
+    backgroundPosition: "20% 0%"
 });
 gsap.to(".img-2", {
     scrollTrigger: {
         trigger: ".text-screen",
         scrub: 1
     },
-    backgroundPosition: "0% 100%"
+    backgroundPosition: "100% 0%"
 });
 
 gsap.to(".intro-video", {
@@ -81,12 +81,37 @@ gsap.to("#video-player", {
     scrollTrigger: {
         trigger: "#video-player",
         start: "top top",
-        end: "+=200",
+        end: "+=500",
         scrub: 1,
         pin: true,
     },
     opacity: 0
 });  
+
+
+gsap.to(".footprint", {
+    scrollTrigger: {
+        trigger: "#video-player",
+        start: "end end",
+        end: "+=300",
+        toggleActions: "restart pause none none", 
+        scrub: 1,
+    },
+    opacity: 1,
+    stagger: .9
+});
+
+gsap.to(".footprint", {
+    scrollTrigger: {
+        trigger: ".logline",
+        start: "end end",
+        end: "+=300",
+        toggleActions: "restart pause none none", 
+        scrub: 1,
+    },
+    opacity: 0,
+    stagger: .9
+});
 
 // logline and why text section
 gsap.from(".logline", {
@@ -95,7 +120,7 @@ gsap.from(".logline", {
         start: "top center",
         end: "+=200",
         toggleActions: "restart pause none none", 
-        scrub: 1,
+        scrub: 1
     },
     opacity: "0"
 });
@@ -145,28 +170,30 @@ mm.add("(min-width: 768px)", () => {
     });
 });
 
-// Residents section
-gsap.from (".note", {
-    scrollTrigger: {
-        start: "center center",
-        trigger: ".note",
-        scrub: 1
-    },
-    opacity: 0,
-    duration: 2,
-    ease: "power1.inOut",
-    stagger: 2
-});
-gsap.from (".arrow", {
-    scrollTrigger: {
-        start: "center center",
-        trigger: ".note",
-        scrub: 1
-    },
-    opacity: 0,
-    duration: 2,
-    ease: "power1.inOut",
-    stagger: 2
+mm.add("(max-width: 768px)", () => {
+    // Residents section
+    gsap.from (".note", {
+        scrollTrigger: {
+            start: "center center",
+            trigger: ".note",
+            scrub: 1
+        },
+        opacity: 0,
+        duration: 2,
+        ease: "power1.inOut",
+        stagger: 2
+    });
+    gsap.from (".arrow", {
+        scrollTrigger: {
+            start: "center center",
+            trigger: ".note",
+            scrub: 1
+        },
+        opacity: 0,
+        duration: 2,
+        ease: "power1.inOut",
+        stagger: 2
+    });
 });
 
 // Crew section
