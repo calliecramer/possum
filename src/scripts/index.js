@@ -88,20 +88,19 @@ gsap.to("#video-player", {
     opacity: 0
 });  
 
-
-gsap.to(".footprint", {
+gsap.to(".footprint-a", {
     scrollTrigger: {
-        trigger: "#video-player",
-        start: "end end",
-        end: "+=300",
+        trigger: "#footprints-trigger",
+        start: "start center",
+        end: "+=500",
         toggleActions: "restart pause none none", 
-        scrub: 1,
+        scrub: 1
     },
     opacity: 1,
     stagger: .9
 });
 
-gsap.to(".footprint", {
+gsap.to(".footprint-a", {
     scrollTrigger: {
         trigger: ".logline",
         start: "end end",
@@ -195,6 +194,19 @@ mm.add("(max-width: 768px)", () => {
         stagger: 2
     });
 });
+
+gsap.to(".footprint-b", {
+    scrollTrigger: {
+        trigger: "#footprints-trigger-2",
+        start: "start center",
+        end: "+=200",
+        toggleActions: "restart pause none none", 
+        scrub: 1
+    },
+    opacity: 1,
+    stagger: .9
+});
+
 
 // Crew section
 

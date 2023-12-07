@@ -70,9 +70,14 @@ body {
 }
 
 /* Screen Sizing */
+$x-small: 400px;
 $phone: 640px;
 $tablet: 768px;
 $desktop: 1200px;
+
+@mixin x-small-up {
+  @media (min-width: $x-small) { @content; }
+}
 
 @mixin phone-up {
   @media (min-width: $phone) { @content; }
@@ -140,7 +145,7 @@ $desktop: 1200px;
   height: 100vh;
   position: absolute;
   z-index: 100;
-  background: $dark;
+  background: $highlight;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -148,17 +153,26 @@ $desktop: 1200px;
 .intro-video {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   flex-direction: column;
   color: $white;
   background-image: url("../images/intro-ss.png");
   background-size: cover;
   height: 0 !important;
-  .title {
+  .title-container {
     max-width: 100%;
     height: 100%;
     margin: 2em 0;
     mix-blend-mode: color-burn;
+    display: flex;
+    align-items: center;
+    img {
+      height: 60%;
+      width: 100%;
+      @include x-small-up {
+        height: 100% !important;
+      }
+    }
   }
   .play-button {
     /* display: grid; */
@@ -187,7 +201,10 @@ $desktop: 1200px;
   }
   .menu {
     a {
-      @include font-size(1.25rem);
+      font-size: 0.8em;
+      @include x-small-up {
+        @include font-size(1.25rem);
+      }
     }
   }
 }
@@ -282,38 +299,80 @@ $desktop: 1200px;
   }
 }
 
+#footprints-trigger {
+  position: absolute;
+  top: 100%;
+}
 #footprints-container {
   position: fixed;
   width: 100%;
   top: 1em;
+  z-index: -1;
   .footprints {
     position: relative;
-    .footprint {
-      max-width: 300px;
+    .footprint-a {
+      max-width: 60px;
       transform: rotate(235deg);
       position: absolute;
       opacity: 0;
+      @include tablet-up {
+        max-width: 80px;
+      }
+      @include tablet-up {
+        max-width: 100px;
+      }
     }
     .footprint-2 {
-      left: 19em;
-      top: 1em;
+      left: 13%;
+      top: 0;
       rotate: (100deg);
     }
     .footprint-3 {
-      left: 38em;
-      top: 7em;
-      transform: rotate(220deg);
+      left: 18%;
+      top: 5em;
+      transform: rotate(241deg);
     }
     .footprint-4 {
-      left: 55em;
+      left: 29%;
+      top: 3em;
+      transform: rotate(-24deg);
+    }
+    .footprint-5 {
+      left: 39%;
       top: 7em;
-      transform: rotate(-18deg);
+      transform: rotate(225deg);
+    }
+    .footprint-6 {
+      left: 46%;
+      top: 2em;
+      transform: rotate(-53deg);
+    }
+    .footprint-7 {
+      left: 57%;
+      top: 6em;
+      transform: rotate(219deg);
+    }
+    .footprint-8 {
+      left: 64%;
+      top: 0;
+      transform: rotate(-59deg);
+    }
+    .footprint-9 {
+      left: 73%;
+      top: 5em;
+      transform: rotate(238deg);
+    }
+    .footprint-10 {
+      left: 82%;
+      top: 0;
+      transform: rotate(-34deg);
+    }
+    .footprint-11 {
+      left: 90%;
+      top: 6em;
+      transform: rotate(251deg);
     }
   }
-}
-
-.footprint-2 {
-  left: 1em;
 }
 
 .comps {
@@ -368,7 +427,8 @@ $desktop: 1200px;
     color: $white;
     position: absolute;
     right: 0;
-    top: -1em;
+    top: -1.25em;
+    padding: 0.5em;
   }
   .width-container {
     position: relative;
@@ -379,14 +439,15 @@ $desktop: 1200px;
   .residents-container {
     display: grid;
     grid-template-columns: 1fr;
-    grid-gap: 2em;
+    column-gap: 3em;
+    row-gap: 1em;
     @include tablet-up {
       grid-template-columns: repeat(2, 1fr);
     }
     .resident {
       background-size: cover;
       background-position: center;
-      background-color: #000c;
+      background-color: #000000e8;
       border-radius: 0.5em;
       border: 5px solid $highlight;
       position: relative;
@@ -394,6 +455,8 @@ $desktop: 1200px;
       color: $white;
       transition: 0.25s all;
       min-height: 375px;
+      display: flex;
+      align-items: center;
       &:hover {
         .name, .note, .arrow {
           opacity: 1;
@@ -427,6 +490,10 @@ $desktop: 1200px;
         position: absolute;
         top: 0;
         left: 6px;
+        font-size: 4em;
+        @include tablet-up {
+          @include font-size(4rem);
+        }
       }
       .name {
         position: absolute;
@@ -476,8 +543,12 @@ $desktop: 1200px;
           background-image: url("../images/cauliflower.png");
           background-size: cover;
           background-position: bottom;
+          z-index: 3;
           p, .bio-x {
             color: $black;
+          }
+          .bio-x {
+            padding-left: 0.2em;
           }
         }
         &.button-3 {
@@ -492,7 +563,7 @@ $desktop: 1200px;
         display: block;
         text-align: center;
         transition: 0.25s all;
-        z-index: 10;
+        z-index: 1;
         border-radius: 3px;
         img {
           max-height: 150px;
@@ -503,14 +574,19 @@ $desktop: 1200px;
           font-weight: 300;
           padding-bottom: 2em;
           @include font-size(0.85rem);
+          @include desktop-up {
+            font-size: 1em;
+          }
         }
-        @include phone-up {
-          text-align: left;
-          padding: 2em;
-          display: flex;
-          gap: 2em;
-          img {
-            padding-bottom: 0;
+        &.mery {
+          display: block;
+          p {
+            padding-bottom: 5em;
+          }
+          @media (min-width: 900px) {
+            display: flex;
+            gap: 1em;
+            padding-bottom: 2em;
           }
         }
       }
@@ -532,7 +608,9 @@ $desktop: 1200px;
     }
     #possum {
       background-image: url("../images/possum-ss.png");
-      background-position: left;
+      @include tablet-up {
+        background-position: left;
+      }
     }
     #annabella {
       background-image: url("../images/annabella.png");
@@ -674,13 +752,19 @@ $desktop: 1200px;
 }
 
 .crew-screen {
+  #crew {
+    padding: 0.25em 0.5em;
+  }
   .crew-top img {
-    margin-bottom: -14em;
+    margin-bottom: -5em;
+    @include phone-up {
+      margin-bottom: -14em;
+    }
   }
   .crew-container {
     display: grid;
     grid-template-columns: 1fr;
-    grid-gap: 0.5em;
+    grid-gap: 1em;
     padding-top: 0;
     @include phone-up {
       grid-template-columns: repeat(2, 1fr);
@@ -712,6 +796,7 @@ $desktop: 1200px;
           &:first-child {
             background: $dark;
             color: $white;
+            z-index: 3;
           }
           &:last-of-type {
             background: $highlight;
@@ -759,6 +844,10 @@ $desktop: 1200px;
             background-position: bottom;
             p, .bio-x {
               color: $black;
+            }
+            .bio-x {
+              padding-left: 0.7em;
+              padding-bottom: 0.7em;
             }
           }
           &.button-3 {
@@ -851,25 +940,127 @@ $desktop: 1200px;
   }
 }
 .buzz {
+  position: relative;
   h2 {
     text-align: center;
     padding-bottom: 0.5em;
     color: $white;
   }
   min-height: auto;
+  .buzz-container {
+    img {
+      max-width: 200px;
+    }
+    @include tablet-up {
+      display: flex;
+      justify-content: center;
+      gap: 1em;
+    }
+  }
+}
+
+#buzz {
+  padding: 0 2em 3em;
+  text-align: center;
 }
 
 .buzz-bottom img {
   margin-bottom: -8em;
 }
 
+#footprints-container-2 {
+  position: fixed;
+  width: 100%;
+  bottom: 45em;
+  z-index: -1;
+  .footprints {
+    position: relative;
+    .footprint-b {
+      max-width: 60px;
+      transform: rotate(235deg);
+      position: absolute;
+      opacity: 0;
+      right: 0;
+      @include tablet-up {
+        max-width: 80px;
+      }
+      @include tablet-up {
+        max-width: 100px;
+      }
+    }
+    .footprint-1 {
+      top: -5vh;
+      right: 4em;
+      rotate: (117deg);
+    }
+    .footprint-2 {
+      top: 7vh;
+      rotate: (181deg);
+    }
+    .footprint-3 {
+      top: 17vh;
+      right: 5em;
+      rotate: (79deg);
+    }
+    .footprint-4 {
+      top: 27vh;
+      rotate: (163deg);
+    }
+    .footprint-5 {
+      top: 37vh;
+      right: 5em;
+      rotate: (97deg);
+    }
+    .footprint-6 {
+      top: 47vh;
+      rotate: (181deg);
+    }
+    .footprint-7 {
+      top: 55vh;
+      right: 7em;
+      rotate: (104deg);
+    }
+    .footprint-8 {
+      top: 67vh;
+      right: 3em;
+      rotate: (192deg);
+    }
+    .footprint-9 {
+      top: 73vh;
+      right: 11em;
+      rotate: (115deg);
+    }
+    .footprint-10 {
+      top: 85vh;
+      right: 9em;
+      rotate: (216deg);
+    }
+  }
+}
+
+#footprints-trigger-2 {
+  margin-top: 20vh;
+  position: absolute;
+  @include tablet-up {
+    position: static;
+    margin-top: 10vh;
+  }
+  @include desktop-up {
+    margin-top: 0;
+  }
+}
+
+#logos {
+  min-height: auto;
+}
 .logos {
   display: grid;
   align-self: center;
   align-items: center;
   justify-items: center;
-  padding: 5em 2em !important;
-  gap: 4em;
+  padding: 5em 10em !important;
+  gap: 2em;
+  max-width: 800px;
   .logo {
     max-width: 250px;
     img {
@@ -878,9 +1069,11 @@ $desktop: 1200px;
   }
   @include phone-up {
     grid-template-columns: 2fr 2fr;
+    margin-bottom: 2em;
   }
   @include desktop-up {
     grid-template-columns: 2fr 2fr 2fr 2fr;
+    padding: 5em 2em !important;
   }
 }
 
