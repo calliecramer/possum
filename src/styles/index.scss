@@ -150,13 +150,22 @@ $desktop: 1200px;
   align-items: center;
   justify-content: center;
 }
+
+#water-texture {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: red;
+}
+
 .intro-video {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
   color: $white;
-  background-image: url("../images/intro-ss.png");
+  background-image: url("../images/intro-ss.webp");
   background-size: cover;
   height: 0 !important;
   .title-container {
@@ -264,7 +273,7 @@ $desktop: 1200px;
 }
 
 .img-bg {
-  background-image: url("../images/background-red-2.png");
+  background-image: url("../images/background-red-2.webp");
   background-size: cover;
   background-position: top;
   width: 100vw;
@@ -273,7 +282,7 @@ $desktop: 1200px;
   z-index: -20;
 }
 .img-2 {
-  background-image: url("../images/background-red-2.png");
+  background-image: url("../images/background-red-2.webp");
   opacity: 0.6;
   mix-blend-mode: normal;
 }
@@ -521,7 +530,7 @@ $desktop: 1200px;
         z-index: 10;
         &:hover {
           cursor: pointer;
-          transform: scale(1.1) rotate(5deg);
+          transform: scale(1.1);
         }
         .bio-content {
           padding: 0;
@@ -540,7 +549,7 @@ $desktop: 1200px;
           background-image: url("../images/scribble-2.svg");
         }
         &.button-2 {
-          background-image: url("../images/cauliflower.png");
+          background-image: url("../images/cauliflower.webp");
           background-size: cover;
           background-position: bottom;
           z-index: 3;
@@ -607,25 +616,25 @@ $desktop: 1200px;
       }
     }
     #possum {
-      background-image: url("../images/possum-ss.png");
+      background-image: url("../images/possum-ss.webp");
       @include tablet-up {
         background-position: left;
       }
     }
     #annabella {
-      background-image: url("../images/annabella.png");
+      background-image: url("../images/annabella.webp");
     }
     #pinecone {
-      background-image: url("../images/pinecone.png");
+      background-image: url("../images/pinecone.webp");
     }
     #tilly {
-      background-image: url("../images/tilly.png");
+      background-image: url("../images/tilly.webp");
     }
     #hadley {
-      background-image: url("../images/hadley.png");
+      background-image: url("../images/hadley.webp");
     }
     #blaze {
-      background-image: url("../images/blaze.png");
+      background-image: url("../images/blaze.webp");
     }
   }
 }
@@ -819,7 +828,7 @@ $desktop: 1200px;
           position: relative;
           &:hover {
             cursor: pointer;
-            transform: scale(1.1) rotate(5deg);
+            transform: scale(1.1);
           }
           .bio-content {
             padding: 0;
@@ -839,7 +848,7 @@ $desktop: 1200px;
             background-image: url("../images/scribble-2.svg");
           }
           &.button-2 {
-            background-image: url("../images/cauliflower.png");
+            background-image: url("../images/cauliflower.webp");
             background-size: cover;
             background-position: bottom;
             p, .bio-x {
@@ -905,37 +914,37 @@ $desktop: 1200px;
       }
     }
     #daisy {
-      background-image: url("../images/daisy.png");
+      background-image: url("../images/daisy.webp");
     }
     #soph {
-      background-image: url("../images/soph-alt.png");
+      background-image: url("../images/soph-alt.webp");
     }
     #jackie {
-      background-image: url("../images/jackie.png");
+      background-image: url("../images/jackie.webp");
     }
     #marissa {
-      background-image: url("../images/marissa-headshot.jpg");
+      background-image: url("../images/marissa-headshot.webp");
     }
     #mary {
-      background-image: url("../images/mary-headshot.jpg");
+      background-image: url("../images/mary-headshot.webp");
     }
     #laura {
-      background-image: url("../images/laura-headshot.png");
+      background-image: url("../images/laura-headshot.webp");
     }
     #leah {
-      background-image: url("../images/leah.png");
+      background-image: url("../images/leah.webp");
     }
     #zack {
-      background-image: url("../images/zach.png");
+      background-image: url("../images/zach.webp");
     }
     #poly {
-      background-image: url("../images/polyester.png");
+      background-image: url("../images/polyester.webp");
     }
     #ariel {
-      background-image: url("../images/ariel-headshot.jpg");
+      background-image: url("../images/ariel-headshot.webp");
     }
     #wren {
-      background-image: url("../images/wren.jpg");
+      background-image: url("../images/wren.webp");
     }
   }
 }

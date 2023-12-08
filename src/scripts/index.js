@@ -1,6 +1,7 @@
 import '../styles/index.scss';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 gsap.registerPlugin(ScrollTrigger);
 require('purecss');
 
@@ -54,7 +55,7 @@ gsap.to(".intro-video", {
         opacity: 0
     });  
 
-let video = document.querySelector('video');
+/*let video = document.querySelector('video');
 addEventListener("scroll", () => {
     video.pause();
 });
@@ -87,7 +88,7 @@ gsap.to("#video-player", {
     },
     opacity: 0
 });  
-
+*/
 gsap.to(".footprint-a", {
     scrollTrigger: {
         trigger: "#footprints-trigger",
@@ -131,42 +132,6 @@ gsap.to ("#text-1", {
         end: "+=500",
         pin: true
     }
-});
-
-// poster section
-gsap.from (".poster-text", {
-    scrollTrigger: {
-        start: "center center",
-        trigger: ".poster",
-        scrub: 1
-    },
-    opacity: 0,
-    duration: 2,
-    ease: "power1.inOut",
-    stagger: 1
-});
-
-gsap.to (".poster .overlay", {
-    scrollTrigger: {
-        start: "center center",
-        trigger: ".poster",
-        scrub: 1
-    },
-    opacity: 0.25,
-    duration: 2,
-    ease: "power1.inOut",
-    stagger: 1
-});
-
-mm.add("(min-width: 768px)", () => {
-    gsap.to (".comps", {
-        scrollTrigger: {
-            trigger: ".comps",
-            start: "center center",
-            end: "+=700",
-            pin: true,
-        }
-    });
 });
 
 mm.add("(max-width: 768px)", () => {
