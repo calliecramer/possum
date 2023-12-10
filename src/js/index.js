@@ -1,14 +1,20 @@
-import '../styles/index.scss';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Renderer, Camera, Transform, Box, Program, Mesh } from 'ogl';
 
 gsap.registerPlugin(ScrollTrigger);
-require('purecss');
 
 addEventListener("load", () => {
     document.body.classList.remove('no-scroll');
     document.getElementById("loading").style.display = 'none';
 });
+
+import Scene from '@/js/components/scene'
+
+(() => {
+  // scene
+  new Scene()
+})()
 
 let bio = document.querySelectorAll('.bio-toggle');
 
@@ -47,6 +53,17 @@ gsap.to(".img-2", {
 gsap.to(".intro-video", {
         scrollTrigger: {
             trigger: ".intro-video",
+            start: "top top",
+            end: "+=200",
+            scrub: 1,
+            pin: true,
+        },
+        opacity: 0
+    });  
+
+    gsap.to(".scene", {
+        scrollTrigger: {
+            trigger: ".scene-trigger",
             start: "top top",
             end: "+=200",
             scrub: 1,
