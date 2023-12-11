@@ -10,12 +10,40 @@ $highlight: #9f5480;
 @import url("https://fonts.googleapis.com/css2?family=Lalezar&family=Reenie+Beanie&family=The+Girl+Next+Door&family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
 @import url("https://use.typekit.net/iay8nzn.css");
 
+/* Screen Sizing */
+$x-small: 400px;
+$phone: 640px;
+$tablet: 768px;
+$desktop: 1200px;
+$xl: 1500px;
+
+@mixin x-small-up {
+  @media (min-width: $x-small) { @content; }
+}
+
+@mixin phone-up {
+  @media (min-width: $phone) { @content; }
+}
+
+@mixin tablet-up {
+  @media (min-width: $tablet) { @content; }
+}
+
+@mixin desktop-up {
+  @media (min-width: $desktop) { @content; }
+}
+
+@mixin xl-up {
+  @media (min-width: $xl) { @content; }
+}
+
 h1 {
   font-family: "The Girl Next Door", cursive;
 }
 
 h2, h3, h4, h5, h6 {
   font-family: "crayonette-djr", sans-serif;
+  user-select: none;
 }
 
 a, p, ul, li {
@@ -23,10 +51,15 @@ a, p, ul, li {
   font-weight: 400;
   font-style: normal;
   line-height: 1.5;
+  user-select: none;
 }
 
 .handwritten {
   font-family: "Reenie Beanie", cursive;
+}
+
+img {
+  user-select: none;
 }
 
 body {
@@ -50,9 +83,15 @@ body {
     @include font-size(1rem);
   }
   .handwritten {
-    @include font-size(1.75rem);
+    @include font-size(1.5rem);
     line-height: 1;
     text-shadow: 0 0 10px $dark;
+    @include tablet-up {
+      @include font-size(1.25rem);
+    }
+    @include desktop-up {
+      @include font-size(1.75rem);
+    }
   }
   a {
     color: $highlight;
@@ -70,31 +109,10 @@ body {
   }
 }
 
-/* Screen Sizing */
-$x-small: 400px;
-$phone: 640px;
-$tablet: 768px;
-$desktop: 1200px;
-
-@mixin x-small-up {
-  @media (min-width: $x-small) { @content; }
-}
-
-@mixin phone-up {
-  @media (min-width: $phone) { @content; }
-}
-
-@mixin tablet-up {
-  @media (min-width: $tablet) { @content; }
-}
-
-@mixin desktop-up {
-  @media (min-width: $desktop) { @content; }
-}
-
 .screen {
   width: 100vw;
   min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
   h2 {
     padding: 0.25em;
     padding-bottom: 0;
@@ -126,7 +144,7 @@ $desktop: 1200px;
 
 .texture {
   &.top {
-    margin-bottom: -4px;
+    margin-bottom: -8px;
   }
   &.light {
     filter: invert(13%) sepia(47%) saturate(7310%) hue-rotate(355deg) brightness(93%) contrast(64%);
@@ -134,6 +152,9 @@ $desktop: 1200px;
   &.flip img {
     transform: rotate(180deg);
     margin-top: -1px;
+  }
+  &.bottom {
+    margin: -8px;
   }
 }
 
@@ -144,9 +165,10 @@ $desktop: 1200px;
 #loading {
   width: 100vw;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   position: absolute;
   z-index: 100;
-  background: $highlight;
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -233,6 +255,7 @@ $desktop: 1200px;
   position: absolute;
   width: 100vw;
   height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   top: 0;
   background: black;
   z-index: -25;
@@ -466,8 +489,10 @@ $desktop: 1200px;
     grid-template-columns: 1fr;
     column-gap: 3em;
     row-gap: 1em;
+    padding: 2em 1em;
     @include tablet-up {
       grid-template-columns: repeat(2, 1fr);
+      padding: 2em;
     }
     .resident {
       background-size: cover;
@@ -529,6 +554,10 @@ $desktop: 1200px;
         opacity: 0;
         p {
           margin: 0;
+          font-size: 0.85rem;
+          @include tablet-up {
+            @include font-size(1rem);
+          }
         }
       }
       button {
@@ -590,6 +619,7 @@ $desktop: 1200px;
         transition: 0.25s all;
         z-index: 1;
         border-radius: 3px;
+        user-select: none;
         img {
           max-height: 150px;
           padding-bottom: 1em;
@@ -598,6 +628,7 @@ $desktop: 1200px;
           margin: 0;
           font-weight: 300;
           padding-bottom: 2em;
+          user-select: none;
           @include font-size(0.85rem);
           @include desktop-up {
             font-size: 1em;
@@ -777,6 +808,7 @@ $desktop: 1200px;
 }
 
 .crew-screen {
+  overflow: hidden;
   #crew {
     padding: 0.25em 0.5em;
   }
@@ -790,14 +822,17 @@ $desktop: 1200px;
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 1em;
-    padding-top: 0;
+    padding: 0 1em 2em 1em;
+    @include tablet-up {
+      padding: 0 2em 2em 2em;
+    }
     @include phone-up {
       grid-template-columns: repeat(2, 1fr);
     }
-    @include tablet-up {
+    @include desktop-up {
       grid-template-columns: repeat(3, 1fr);
     }
-    @include desktop-up {
+    @include xl-up {
       grid-template-columns: repeat(4, 1fr);
     }
     .crew {
@@ -902,6 +937,7 @@ $desktop: 1200px;
           margin: 0;
           font-size: 0.85em;
           color: $white;
+          user-select: none;
         }
         @include phone-up {
           text-align: left;
@@ -940,6 +976,7 @@ $desktop: 1200px;
     }
     #marissa {
       background-image: url("../img/marissa-headshot.webp");
+      background-position: top;
     }
     #mary {
       background-image: url("../img/mary-headshot.webp");
@@ -996,58 +1033,103 @@ $desktop: 1200px;
   .footprints {
     position: relative;
     .footprint-b {
-      max-width: 60px;
+      max-width: 80px;
       transform: rotate(235deg);
       position: absolute;
       opacity: 0;
       right: 0;
       @include tablet-up {
-        max-width: 80px;
-      }
-      @include tablet-up {
         max-width: 100px;
       }
     }
+    @include phone-up{
+      .footprint-1 {
+        top: -5vh;
+        right: 4em;
+        rotate: (117deg);
+      }
+      .footprint-2 {
+        top: 7vh;
+        rotate: (181deg);
+      }
+      .footprint-3 {
+        top: 17vh;
+        right: 5em;
+        rotate: (79deg);
+      }
+      .footprint-4 {
+        top: 27vh;
+        rotate: (163deg);
+      }
+      .footprint-5 {
+        top: 37vh;
+        right: 5em;
+        rotate: (97deg);
+      }
+      .footprint-6 {
+        top: 47vh;
+        rotate: (181deg);
+      }
+      .footprint-7 {
+        top: 55vh;
+        right: 7em;
+        rotate: (104deg);
+      }
+      .footprint-8 {
+        top: 67vh;
+        right: 3em;
+        rotate: (192deg);
+      }
+      .footprint-9 {
+        top: 73vh;
+        right: 11em;
+        rotate: (115deg);
+      }
+      .footprint-10 {
+        top: 85vh;
+        right: 9em;
+        rotate: (216deg);
+      }
+    }
     .footprint-1 {
-      top: -5vh;
-      right: 4em;
-      rotate: (117deg);
+      display: none;
     }
     .footprint-2 {
-      top: 7vh;
+      top: 5em;
+      right: -1em;
       rotate: (181deg);
     }
     .footprint-3 {
-      top: 17vh;
-      right: 5em;
-      rotate: (79deg);
+      top: 18vh;
+      right: 3em;
+      rotate: (98deg);
     }
     .footprint-4 {
-      top: 27vh;
+      top: 28vh;
       rotate: (163deg);
     }
     .footprint-5 {
-      top: 37vh;
-      right: 5em;
+      top: 39vh;
+      right: 4em;
       rotate: (97deg);
     }
     .footprint-6 {
-      top: 47vh;
+      top: 49vh;
       rotate: (181deg);
     }
     .footprint-7 {
-      top: 55vh;
-      right: 7em;
+      top: 58vh;
+      right: 5em;
       rotate: (104deg);
     }
     .footprint-8 {
       top: 67vh;
-      right: 3em;
+      right: 2em;
       rotate: (192deg);
     }
     .footprint-9 {
-      top: 73vh;
-      right: 11em;
+      top: 76vh;
+      right: 7em;
       rotate: (115deg);
     }
     .footprint-10 {
@@ -1059,9 +1141,10 @@ $desktop: 1200px;
 }
 
 #footprints-trigger-2 {
-  margin-top: 20vh;
+  margin-top: 0;
   position: absolute;
   @include tablet-up {
+    margin-top: 20vh;
     position: static;
     margin-top: 10vh;
   }
@@ -1078,18 +1161,24 @@ $desktop: 1200px;
   align-self: center;
   align-items: center;
   justify-items: center;
-  padding: 5em 10em !important;
+  padding: 5em 5em !important;
   gap: 2em;
   max-width: 800px;
   .logo {
-    max-width: 300px;
+    max-width: 200px;
     img {
       max-width: 100%;
     }
   }
+  @include x-small-up {
+    padding: 5em 8em !important;
+  }
   @include phone-up {
     grid-template-columns: 2fr 2fr;
     margin-bottom: 2em;
+    .logo {
+      max-width: 300px;
+    }
   }
   @include desktop-up {
     grid-template-columns: 2fr 2fr 2fr 2fr;

@@ -11,10 +11,16 @@ addEventListener("load", () => {
 
 import Scene from '@/js/components/scene'
 
-(() => {
-  // scene
-  new Scene()
-})()
+var phone = window.matchMedia("(min-width: 640px)")
+if (phone.matches) {
+    (() => {
+    // scene
+    new Scene()
+    })()
+}
+
+let vh = window.innerHeight * 0.01;
+document.documentElement.style.setProperty('--vh', `${vh}px`);
 
 let bio = document.querySelectorAll('.bio-toggle');
 
@@ -39,7 +45,6 @@ setOffsets = function() {
     return cy = shadow.offset().top + shadow.height() / 2;
 };
 
-var phone = window.matchMedia("(min-width: 640px)")
 if (phone.matches) {
     addEventListener("mousemove", (e) => {
         var dx, dy, mx, my;
@@ -52,7 +57,7 @@ if (phone.matches) {
     });
 }
 
-ScrollTrigger.normalizeScroll(true);
+ScrollTrigger.normalizeScroll(false);
 
 let mm = gsap.matchMedia();
 
@@ -78,6 +83,7 @@ tl.to(".intro-video", {
         end: "+=200",
         scrub: 1,
         pin: true,
+        anticipatePin: 1
     },
     opacity: 0
 });  
@@ -88,6 +94,7 @@ tl.to(".scene", {
     end: "+=200",
     scrub: 1,
     pin: true,
+    anticipatePin: 1
     },
     opacity: 0
 });  
@@ -168,7 +175,8 @@ tl.to ("#text-1", {
         trigger: "#text-1",
         start: "top top",
         end: "+=500",
-        pin: true
+        pin: true,
+        anticipatePin: 1
     }
 });
 
@@ -221,7 +229,7 @@ tl.to(".footprint-b", {
     scrollTrigger: {
         trigger: "#footprints-trigger-2",
         start: "start center",
-        end: "+=100",
+        end: "+=200",
         toggleActions: "restart pause none none", 
         scrub: 1
     },
