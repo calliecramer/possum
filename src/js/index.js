@@ -30,47 +30,68 @@ bio.forEach((button) => {
     });
 });
 
+
+var cx, cy, shadow, setOffsets;
+shadow = document.getElementById("shadow");
+cx = cy = 0;
+setOffsets = function() {
+    cx = shadow.offset().left + h1.width() / 2;
+    return cy = shadow.offset().top + shadow.height() / 2;
+};
+
+var phone = window.matchMedia("(min-width: 640px)")
+if (phone.matches) {
+    addEventListener("mousemove", (e) => {
+        var dx, dy, mx, my;
+        mx = e.clientX;
+        my = e.clientY;
+        dx = cx - mx;
+        dy = cy - my;
+        shadow.style.left=dx/50 + "px";
+        shadow.style.top=dy/50 + "px";
+    });
+}
+
 ScrollTrigger.normalizeScroll(true);
 
 let mm = gsap.matchMedia();
 
-//var tl = gsap.timeline();
-gsap.to(".img-bg", {
+var tl = gsap.timeline();
+tl.to(".img-bg", {
     scrollTrigger: {
         trigger: ".text-screen",
         scrub: 1
     },
     backgroundPosition: "20% 0%"
 });
-gsap.to(".img-2", {
+tl.to(".img-2", {
     scrollTrigger: {
         trigger: ".text-screen",
         scrub: 1
     },
     backgroundPosition: "100% 0%"
 });
+tl.to(".intro-video", {
+    scrollTrigger: {
+        trigger: ".intro-video",
+        start: "top top",
+        end: "+=200",
+        scrub: 1,
+        pin: true,
+    },
+    opacity: 0
+});  
+tl.to(".scene", {
+    scrollTrigger: {
+    trigger: ".scene-trigger",
+    start: "top top",
+    end: "+=200",
+    scrub: 1,
+    pin: true,
+    },
+    opacity: 0
+});  
 
-gsap.to(".intro-video", {
-        scrollTrigger: {
-            trigger: ".intro-video",
-            start: "top top",
-            end: "+=200",
-            scrub: 1,
-            pin: true,
-        },
-        opacity: 0
-    });  
-
-    gsap.to(".scene", {
-        scrollTrigger: {
-            trigger: ".scene-trigger",
-            start: "top top",
-            end: "+=200",
-            scrub: 1,
-            pin: true,
-        },
-        opacity: 0
-    });  
 
 /*let video = document.querySelector('video');
 addEventListener("scroll", () => {
@@ -106,7 +127,7 @@ gsap.to("#video-player", {
     opacity: 0
 });  
 */
-gsap.to(".footprint-a", {
+tl.to(".footprint-a", {
     scrollTrigger: {
         trigger: "#footprints-trigger",
         start: "start center",
@@ -118,7 +139,7 @@ gsap.to(".footprint-a", {
     stagger: .9
 });
 
-gsap.to(".footprint-a", {
+tl.to(".footprint-a", {
     scrollTrigger: {
         trigger: ".logline",
         start: "end end",
@@ -131,7 +152,7 @@ gsap.to(".footprint-a", {
 });
 
 // logline and why text section
-gsap.from(".logline", {
+tl.from(".logline", {
     scrollTrigger: {
         trigger: ".logline",
         start: "top center",
@@ -142,7 +163,7 @@ gsap.from(".logline", {
     opacity: "0"
 });
 
-gsap.to ("#text-1", {
+tl.to ("#text-1", {
     scrollTrigger: {
         trigger: "#text-1",
         start: "top top",
@@ -152,36 +173,55 @@ gsap.to ("#text-1", {
 });
 
 mm.add("(max-width: 768px)", () => {
-    // Residents section
-    gsap.from (".note", {
-        scrollTrigger: {
-            start: "center center",
-            trigger: ".note",
-            scrub: 1
-        },
-        opacity: 0,
-        duration: 2,
-        ease: "power1.inOut",
-        stagger: 2
-    });
-    gsap.from (".arrow", {
-        scrollTrigger: {
-            start: "center center",
-            trigger: ".note",
-            scrub: 1
-        },
-        opacity: 0,
-        duration: 2,
-        ease: "power1.inOut",
-        stagger: 2
-    });
+    var notes = gsap.utils.toArray('.note');
+    notes.forEach((note) => {
+        gsap.to(note, {
+            scrollTrigger: {
+                trigger: note,
+                start: "start center",
+                end: "+=100",
+                toggleActions: "restart pause none none", 
+                scrub: 1
+            },
+            opacity: 1,
+            stagger: .5
+        });
+    })
+    var arrows = gsap.utils.toArray('.arrow');
+    arrows.forEach((arrow) => {
+        gsap.to(arrow, {
+            scrollTrigger: {
+                trigger: arrow,
+                start: "start center",
+                end: "+=100",
+                toggleActions: "restart pause none none", 
+                scrub: 1
+            },
+            opacity: 1,
+            stagger: .5
+        });
+    })
+    var names = gsap.utils.toArray('.name');
+    names.forEach((name) => {
+        gsap.to(name, {
+            scrollTrigger: {
+                trigger: name,
+                start: "start-=200 center",
+                end: "+=100",
+                toggleActions: "restart pause none none", 
+                scrub: 1
+            },
+            opacity: 1,
+            stagger: .5
+        });
+    })
 });
 
-gsap.to(".footprint-b", {
+tl.to(".footprint-b", {
     scrollTrigger: {
         trigger: "#footprints-trigger-2",
         start: "start center",
-        end: "+=200",
+        end: "+=100",
         toggleActions: "restart pause none none", 
         scrub: 1
     },

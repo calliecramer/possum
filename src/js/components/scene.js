@@ -51,7 +51,7 @@ class Scene {
         image.src = url
       })
 
-    const texture = await loadTexture('./img/intro-ss.png')
+    const texture = await loadTexture('./img/intro-ss-2.png')
 
     this.handleResize()
 

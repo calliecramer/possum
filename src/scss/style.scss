@@ -153,10 +153,13 @@ $desktop: 1200px;
 }
 
 .scene {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: -1;
+  @media (max-width: $phone) {
+    display: none;
+  }
 }
 
 .intro-video {
@@ -168,6 +171,10 @@ $desktop: 1200px;
   //background-image: url("../img/intro-ss.webp");
   background-size: cover;
   height: 0 !important;
+  @media (max-width: $phone) {
+    background-image: url("../img/intro-ss-2.webp");
+    background-position: center;
+  }
   .title-container {
     max-width: 100%;
     height: 100%;
@@ -177,9 +184,14 @@ $desktop: 1200px;
     img {
       height: 60%;
       width: 100%;
-      @include x-small-up {
+      @include phone-up {
         height: 100% !important;
       }
+    }
+    .shadow {
+      position: absolute;
+      opacity: 40%;
+      z-index: -1;
     }
   }
   .play-button {
@@ -272,7 +284,7 @@ $desktop: 1200px;
 }
 
 .img-bg {
-  background-image: url("../img/background-red-2.webp");
+  background-image: url("../img/background-red-2.png");
   background-size: cover;
   background-position: top;
   width: 100vw;
@@ -281,7 +293,7 @@ $desktop: 1200px;
   z-index: -20;
 }
 .img-2 {
-  background-image: url("../img/background-red-2.webp");
+  background-image: url("../img/background-red-2.png");
   opacity: 0.6;
   mix-blend-mode: normal;
 }
@@ -427,6 +439,11 @@ $desktop: 1200px;
       }
     }
   }
+}
+
+#residents {
+  position: relative;
+  top: -4em;
 }
 
 .residents {
@@ -592,9 +609,9 @@ $desktop: 1200px;
             padding-bottom: 5em;
           }
           @media (min-width: 900px) {
-            display: flex;
-            gap: 1em;
-            padding-bottom: 2em;
+            p {
+              padding-bottom: 5em;
+            }
           }
         }
       }
@@ -867,11 +884,12 @@ $desktop: 1200px;
         grid-row: 1/5;
         grid-column: 1/1;
         opacity: 0;
-        background: #000c;
+        background: #000000e8;
         padding: 1em;
         padding-bottom: 0;
         overflow: auto;
-        display: block;
+        display: flex;
+        align-items: center;
         text-align: center;
         transition: 0.25s all;
         border-radius: 0.25em;
@@ -882,9 +900,8 @@ $desktop: 1200px;
         }
         p {
           margin: 0;
-          font-weight: 300;
+          font-size: 0.85em;
           color: $white;
-          @include font-size(0.7rem);
         }
         @include phone-up {
           text-align: left;
@@ -899,7 +916,7 @@ $desktop: 1200px;
       }
       &.open {
         .lower-third {
-          background-color: #000c;
+          background-color: #000000e8;
         }
         .bio {
           opacity: 1;
@@ -958,11 +975,6 @@ $desktop: 1200px;
   .buzz-container {
     img {
       max-width: 200px;
-    }
-    @include tablet-up {
-      display: flex;
-      justify-content: center;
-      gap: 1em;
     }
   }
 }
@@ -1070,7 +1082,7 @@ $desktop: 1200px;
   gap: 2em;
   max-width: 800px;
   .logo {
-    max-width: 250px;
+    max-width: 300px;
     img {
       max-width: 100%;
     }

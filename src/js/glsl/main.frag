@@ -12,7 +12,7 @@ vec2 bulge(vec2 uv, vec2 center) {
   uv -= center;
   
   float dist = length(uv) / radius; // distance from UVs top right corner
-  float distPow = pow(dist, 5.);
+  float distPow = pow(dist, 2.);
   float strengthAmount = strength / (1.0 + distPow);
   uv *= strengthAmount; 
   

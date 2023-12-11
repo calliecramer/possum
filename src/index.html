@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
   <title>POSSUM</title>
   <link rel="shortcut icon" type="image/png" href="img/favicon.ico"/>
   <link rel="stylesheet" href="./scss/style.scss" />
@@ -19,7 +20,8 @@
   <div class="scene-trigger"></div>
   <div class="intro-video screen">
     <div class="title-container">
-      <img class="title" src="/img/possum-1-pink.webp" alt="POSSUM">
+      <img class="title" src="/img/possum-title-pink.webp" alt="POSSUM">
+      <img id="shadow" class="title shadow" src="/img/possum-title-shadow.png" alt="POSSUM shadow">
     </div>
     <div class="play-button">
       <img alt="cauliflower illustration" src="img/cauliflower.webp">
@@ -90,8 +92,8 @@
       <img style="opacity: 56%;" src="img/texture-01-a-light.svg" alt="cracked paint texture">
     </div>
   </div>
-  
-  <div class="screen residents light-bg" id="residents">
+  <div id="residents"></div>
+  <div class="screen residents light-bg">
     <div class="width-container">
       <h2>the residents</h2>
       <div class="residents-container padded">
@@ -202,7 +204,7 @@
         <div class="crew" id="daisy">
           <div class="tags">
             <p style="bottom: 30px; left: 18px; transform: rotate(-5deg)">DAISY ROSATO</p>
-            <p style="bottom: 4px; left: 34px; transform: rotate(3deg);">Director/Co-Writer/Co-Producer</p>
+            <p style="bottom: -2px; left: 34px; transform: rotate(1deg);">Director/Co-Writer/Co-Producer</p>
           </div>
           <div class="lower-third">
             <button class="bio-toggle button-2" data-target="daisy">
@@ -249,7 +251,7 @@
         <div class="crew" id="zack">
           <div class="tags">
             <p style="bottom: 32px; right: 28px; transform: rotate(5deg);">ZACK SKY</p>
-            <p style="bottom: -4px; left: 28px; transform: rotate(-5deg);">Director of Photography</p>
+            <p style="bottom: -4px; right: 28px; transform: rotate(-5deg);">Director of Photography</p>
           </div>
           <div class="lower-third">
             <button class="bio-toggle button-2" data-target="zack">
@@ -265,7 +267,7 @@
         <div class="crew" id="marissa">
           <div class="tags">
             <p style="bottom: 30px; left: 18px; transform: rotate(-5deg);">MARISSA TODD</p>
-            <p style="bottom: 4px; left: 100px; transform: rotate(5deg);">Production Designer</p>
+            <p style="bottom: 1px; left: 100px; transform: rotate(2deg);">Production Designer</p>
           </div>
           <div class="lower-third">
             <button class="bio-toggle button-2" data-target="marissa">
@@ -280,8 +282,8 @@
         </div>
         <div class="crew" id="laura">
           <div class="tags">
-            <p style="bottom: 14px; right: 11px; transform: rotate(5deg);">LAURA CONTE</p>
-            <p style="bottom: -4px; left: 53px; transform: rotate(-5deg);">Editor</p>
+            <p style="bottom: 21px; right: 11px; transform: rotate(5deg);">LAURA CONTE</p>
+            <p style="bottom: -9px; right: 67px; transform: rotate(-2deg);">Editor</p>
           </div>
           <div class="lower-third">
             <button class="bio-toggle button-2" data-target="laura">
@@ -296,7 +298,7 @@
         <div class="crew" id="poly">
           <div class="tags">
             <p style="bottom: 30px; left: 18px; transform: rotate(-5deg);">POLY ESTER</p>
-            <p style="bottom: 4px; left: 64px; transform: rotate(5deg);">Costume Designer/HMU</p>
+            <p style="bottom: 0px; left: 64px; transform: rotate(2deg);">Costume Designer/HMU</p>
           </div>
           <div class="lower-third">
             <button class="bio-toggle button-2" data-target="poly">
@@ -311,7 +313,7 @@
         <div class="crew" id="leah">
           <div class="tags">
             <p style="bottom: 32px; right: 28px; transform: rotate(5deg);">LEAH SHAPIRO</p>
-            <p style="bottom: -4px; left: 28px; transform: rotate(-5deg);">Casting Director</p>
+            <p style="bottom: -4px; right: 28px; transform: rotate(-5deg);">Casting Director</p>
           </div>
           <div class="lower-third">
             <button class="bio-toggle button-2" data-target="leah">
@@ -340,8 +342,8 @@
         </div>
         <div class="crew" id="mary">
           <div class="tags">
-            <p style="bottom: 32px; right: 28px; transform: rotate(5deg);">MARY PERRINO</p>
-            <p style="bottom: 8px; left: 56px; transform: rotate(-5deg);">Colorist</p>
+            <p style="bottom: 38px; right: 28px; transform: rotate(5deg);">MARY PERRINO</p>
+            <p style="bottom: 1px; right: 56px; transform: rotate(-5deg);">Colorist</p>
           </div>
           <div class="lower-third">
             <button class="bio-toggle button-2" data-target="mary">
@@ -356,7 +358,7 @@
         <div class="crew" id="wren">
           <div class="tags">
             <p style="bottom: 30px; left: 18px; transform: rotate(-5deg);">WREN STARK HAVEN</p>
-            <p style="bottom: 4px; left: 100px; transform: rotate(5deg);">Sound Designer</p>
+            <p style="bottom: -2px; left: 100px; transform: rotate(5deg);">Sound Designer</p>
           </div>
           <div class="lower-third">
             <button class="bio-toggle button-2" data-target="wren">
@@ -378,6 +380,9 @@
     <div class="width-container" id="buzz">
       <h2>buzz</h2>
       <div class="buzz-container">
+        <p>
+          Fiscally sponsored by Stowe Story Labs: Read more about our partnership <a class="white" href="https://stowestorylabs.org/fiscal-agency-campaigns/daisy-rosato" target="_blank">here</a>.
+        </p>
         <p>
           <a href="https://www.hollyshorts.com/" target="_blank" class="white" style="margin-bottom: 2em;">HollyShorts Screenwriting Competition Quarterfinalist (2023)</a>
         </p>
@@ -402,7 +407,7 @@
         </a>
       </div>
       <div class="logo">
-        <a target="_blank" href="https://stowestorylabs.org/">
+        <a target="_blank" href="https://stowestorylabs.org/fiscal-agency-campaigns/daisy-rosato">
           <img src="img/stowe-logo.webp" alt="Stowe Logo">
         </a>
       </div> 
@@ -426,7 +431,7 @@
       </div>
     </div>
   <div class="dark-bg footer">
-    <p><a href="#" class="white">site by callie cramer</a></p>
+    <p><a href="https://www.calliecramer.com/" class="white">site by callie cramer</a></p>
   </div>
   <canvas class="scene"></canvas>
 </body>
