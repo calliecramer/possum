@@ -5,8 +5,8 @@ import { Renderer, Camera, Transform, Box, Program, Mesh } from 'ogl';
 gsap.registerPlugin(ScrollTrigger);
 
 addEventListener("load", () => {
-    document.body.classList.remove('no-scroll');
     document.getElementById("loading").style.display = 'none';
+    document.body.classList.remove('no-scroll');
 });
 
 import Scene from '@/js/components/scene'
@@ -45,6 +45,14 @@ setOffsets = function() {
     return cy = shadow.offset().top + shadow.height() / 2;
 };
 
+var desktop = window.matchMedia("(min-width: 1200px)")
+if (desktop.matches) {
+    window.onresize = function(){ 
+        location.reload(); 
+        window.scrollTo(0, 0);
+    }
+}
+
 if (phone.matches) {
     addEventListener("mousemove", (e) => {
         var dx, dy, mx, my;
@@ -59,22 +67,28 @@ if (phone.matches) {
 
 ScrollTrigger.normalizeScroll(false);
 
+var maxScroll = ScrollTrigger.maxScroll(window);
+
 let mm = gsap.matchMedia();
 
 var tl = gsap.timeline();
 tl.to(".img-bg", {
     scrollTrigger: {
         trigger: ".text-screen",
+        start: "top bottom",
+        end: maxScroll,
         scrub: 1
     },
-    backgroundPosition: "20% 0%"
+    backgroundPosition: "50% 100%"
 });
 tl.to(".img-2", {
     scrollTrigger: {
         trigger: ".text-screen",
+        start: "top bottom",
+        end: maxScroll,
         scrub: 1
     },
-    backgroundPosition: "100% 0%"
+    backgroundPosition: "20% 100%"
 });
 tl.to(".intro-video", {
     scrollTrigger: {
@@ -179,7 +193,6 @@ tl.to ("#text-1", {
         anticipatePin: 1
     }
 });
-
 mm.add("(max-width: 768px)", () => {
     var notes = gsap.utils.toArray('.note');
     notes.forEach((note) => {
@@ -224,17 +237,80 @@ mm.add("(max-width: 768px)", () => {
         });
     })
 });
+ScrollTrigger.batch(".resident", {
+    batchMax: 3, 
+    onEnter: (batch) => {
+      gsap.to(batch, {
+        autoAlpha: 1, 
+        stagger: 0.3, 
+        overwrite: true,})
+    }, 
+});
 
-tl.to(".footprint-b", {
-    scrollTrigger: {
-        trigger: "#footprints-trigger-2",
-        start: "start center",
-        end: "+=200",
-        toggleActions: "restart pause none none", 
-        scrub: 1
-    },
-    opacity: 1,
-    stagger: .9
+ScrollTrigger.batch(".crew", {
+    batchMax: 4, 
+    onEnter: (batch) => {
+      gsap.to(batch, {
+        autoAlpha: 1, 
+        stagger: 0.3, 
+        overwrite: true,})
+    }, 
+});
+
+
+mm.add("(min-width: 1200px)", () => {
+    tl.to(".footprint-b", {
+        scrollTrigger: {
+            trigger: "#footprints-trigger-2",
+            start: "start-=200 center",
+            end: "+=200",
+            toggleActions: "restart pause none none", 
+            scrub: 1
+        },
+        opacity: 1,
+        stagger: .9
+    });
+});
+
+mm.add("(max-width: 120000px)", () => {
+    tl.to(".logo", {
+        scrollTrigger: {
+            trigger: ".logos",
+            start: "start-=100 center",
+            end: "+=100",
+            toggleActions: "restart pause none none",
+            scrub: 1
+        },
+        autoAlpha: 1, 
+        stagger: .9
+    });
+});
+
+mm.add("(max-width: 1200px)", () => {
+    tl.to(".footprint-b", {
+        scrollTrigger: {
+            trigger: "#footprints-trigger-2",
+            start: "start center",
+            end: "+=200",
+            toggleActions: "restart pause none none", 
+            scrub: 1
+        },
+        opacity: 1,
+        stagger: .9
+    });
+});
+
+mm.add("(max-width: 640px)", () => {
+    ScrollTrigger.batch(".logo", {
+        batchMax: 2, 
+        onEnter: (batch) => {
+          gsap.to(batch, {
+            autoAlpha: 1, 
+            stagger: 0.5, 
+            overwrite: true, })
+        }, 
+        start: "start-=300 center",
+    });
 });
 
 

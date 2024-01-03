@@ -168,7 +168,7 @@ body {
   height: calc(var(--vh, 1vh) * 100);
   position: absolute;
   z-index: 100;
-  background: #ffffff;
+  background: $highlight;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -190,11 +190,10 @@ body {
   justify-content: space-between;
   flex-direction: column;
   color: $white;
-  //background-image: url("../img/intro-ss.webp");
   background-size: cover;
   height: 0 !important;
   @media (max-width: $phone) {
-    background-image: url("../img/intro-ss-2.webp");
+    background-image: url("../img/intro-ss.webp");
     background-position: center;
   }
   .title-container {
@@ -206,14 +205,18 @@ body {
     img {
       height: 60%;
       width: 100%;
+      mix-blend-mode: color;
       @include phone-up {
         height: 100% !important;
+        mix-blend-mode: hard-light;
       }
     }
     .shadow {
       position: absolute;
-      opacity: 40%;
-      z-index: -1;
+      opacity: 30%;
+      @include phone-up {
+        z-index: -1;
+      }
     }
   }
   .play-button {
@@ -239,14 +242,6 @@ body {
       margin-bottom: 0.5em;
       color: $dark;
       padding-top: 10px;
-    }
-  }
-  .menu {
-    a {
-      font-size: 0.8em;
-      @include x-small-up {
-        @include font-size(1.25rem);
-      }
     }
   }
 }
@@ -308,7 +303,6 @@ body {
 
 .img-bg {
   background-image: url("../img/background-red-2.png");
-  background-size: cover;
   background-position: top;
   width: 100vw;
   height: 110vh;
@@ -330,6 +324,7 @@ body {
     min-width: 25px;
   }
   .instagram {
+    line-height: 0;
     path {
       fill: $white;
       transition: 0.25s all;
@@ -339,6 +334,32 @@ body {
         fill: $highlight;
       }
     }
+  }
+  a {
+    font-size: 0.8em;
+    @include x-small-up {
+      @include font-size(1.25rem);
+    }
+  }
+  .button {
+    border: 2px solid $white;
+    padding: 0.1em 1em 0.25em 1em;
+    border-radius: 1em;
+    transition: 0.25s all;
+    cursor: pointer;
+    &:hover {
+      border-color: $highlight;
+      a {
+        color: $highlight;
+      }
+    }
+    a {
+     text-decoration: none;
+     font-size: 0.8rem!important;
+    }
+  }
+  .arrow::after {
+    content: "->";
   }
 }
 
@@ -500,6 +521,7 @@ body {
       padding: 2em;
     }
     .resident {
+      opacity: 0;
       background-size: cover;
       background-position: center;
       border-radius: 0.5em;
@@ -513,6 +535,7 @@ body {
       align-items: center;
       .bio-bg {
         opacity: 0;
+        transition: 0.25s all;
       }
       &:hover {
         .name, .note, .arrow {
@@ -583,7 +606,7 @@ body {
         transition: 0.25s all;
         transform: scale(1) rotate(0deg);
         margin: 0.5em;
-        padding: 1.25em;
+        padding: 1.5em;
         bottom: 0;
         right: 0;
         z-index: 10;
@@ -617,6 +640,9 @@ body {
           }
           .bio-x {
             padding-left: 0.2em;
+          }
+          &:hover {
+            animation: button .5s infinite;
           }
         }
         &.button-3 {
@@ -821,6 +847,27 @@ body {
   }
 }
 
+@keyframes button {
+  0% {
+    background-image: url("../img/cauliflower-1.png");
+  }
+  20% {
+    background-image: url("../img/cauliflower-2.png");
+  }
+  40% {
+    background-image: url("../img/cauliflower-3.png");
+  }
+  60% {
+    background-image: url("../img/cauliflower-1.png");
+  }
+  80% {
+    background-image: url("../img/cauliflower-5.png");
+  }
+  100% {
+    background-image: url("../img/cauliflower-6.png");
+  }
+}
+
 .crew-screen {
   overflow: hidden;
   #crew {
@@ -851,6 +898,7 @@ body {
     }
     .crew {
       display: grid;
+      opacity: 0;
       grid-template-rows: repeat(4, 1fr);
       background-size: cover;
       background-position: center;
@@ -887,7 +935,7 @@ body {
           background-color: transparent;
           border: none;
           margin: 0.25em;
-          padding: 1.25em;
+          padding: 1.5em;
           color: $white;
           transition: 0.25s all;
           position: relative;
@@ -922,6 +970,9 @@ body {
             .bio-x {
               padding-left: 0.7em;
               padding-bottom: 0.7em;
+            }
+            &:hover {
+              animation: button .5s infinite;
             }
           }
           &.button-3 {
@@ -1015,18 +1066,64 @@ body {
     }
   }
 }
+
+@keyframes arrow {
+  0% {
+    background-image: url("../img/arrow-a.webp");
+  }
+  20% {
+    background-image: url("../img/arrow-b.webp");
+  }
+  40% {
+    background-image: url("../img/arrow-c.webp");
+  }
+  60% {
+    background-image: url("../img/arrow-d.webp");
+  }
+  80% {
+    background-image: url("../img/arrow-e.webp");
+  }
+  100% {
+    background-image: url("../img/arrow-f.webp");
+  }
+}
+
 .buzz {
   position: relative;
   h2 {
     text-align: center;
-    padding-bottom: 0.5em;
     color: $white;
+  }
+  p {
+    font-size: 1.25em;
   }
   min-height: auto;
   .buzz-container {
-    img {
-      max-width: 200px;
+    text-align: left;
+  }
+  a {
+    text-decoration: none;
+  }
+  .item {
+    padding: 0.25em 1em;
+    display: flex;
+    .arrow {
+      width: 50px;
+      margin: 0 1em;
+      background-image: url("../img/arrow-a.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
     }
+    &:hover {
+      .arrow {
+        animation: arrow .5s infinite;
+      }
+    }
+  }
+  hr {
+    border: 0.5px solid $white;
+    opacity: 50%;
   }
 }
 
@@ -1180,6 +1277,10 @@ body {
   max-width: 800px;
   .logo {
     max-width: 200px;
+    height: 100%;
+    opacity: 0;
+    display: flex;
+    align-items: center;
     img {
       max-width: 100%;
     }
