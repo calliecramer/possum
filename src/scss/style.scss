@@ -273,6 +273,10 @@ body {
   }
 }
 
+.menu-1 {
+  margin-bottom: 0 !important;
+}
+
 .text-screen {
   color: $white;
   overflow: hidden;
@@ -320,6 +324,7 @@ body {
   display: flex;
   align-items: center;
   margin: 1em;
+  flex-wrap: wrap;
   div {
     min-width: 25px;
   }
@@ -358,8 +363,18 @@ body {
      font-size: 0.8rem!important;
     }
   }
-  .arrow::after {
-    content: "->";
+  img {
+    max-width: .5rem;
+    transform: rotate(60deg);
+  }
+  .external {
+    text-decoration: none;
+    &::after {
+      content: "\2192";
+      line-height: 0;
+      max-width: 10px;
+      text-decoration: none;
+    }
   }
 }
 
@@ -1034,7 +1049,10 @@ body {
       background-image: url("../img/daisy.webp");
     }
     #soph {
-      background-image: url("../img/soph-alt.webp");
+      background-image: url("../img/soph-2.webp");
+    }
+    #lea {
+      background-image: url("../img/lea.webp");
     }
     #jackie {
       background-image: url("../img/jackie.webp");
@@ -1052,7 +1070,7 @@ body {
     #leah {
       background-image: url("../img/leah.webp");
     }
-    #zack {
+    #zach {
       background-image: url("../img/zach.webp");
     }
     #poly {
