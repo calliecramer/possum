@@ -197,12 +197,18 @@ body {
     background-image: url("../img/intro-ss.webp");
     background-position: center;
   }
+  @include desktop-up {
+    justify-content: flex-start;
+  }
   .title-container {
     max-width: 100%;
-    height: 100%;
+    height: 60%;
     margin: 2em 0;
     display: flex;
     align-items: center;
+    @include desktop-up {
+      height: 50%;
+    }
     img {
       height: 60%;
       width: 100%;
