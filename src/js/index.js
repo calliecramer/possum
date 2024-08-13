@@ -1,5 +1,6 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Player from "@vimeo/player";
 import { Renderer, Camera, Transform, Box, Program, Mesh } from 'ogl';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -114,9 +115,11 @@ tl.to(".scene", {
 });  
 
 
-/*let video = document.querySelector('video');
+//let video = document.querySelector('video');
+var iframe = document.querySelector('iframe');
+var player = new Player(iframe);
 addEventListener("scroll", () => {
-    video.pause();
+    player.pause();
 });
 
 let playButton = document.querySelector('.play-button');
@@ -127,14 +130,14 @@ playButton.addEventListener('click', () => {
     videoPlayer.style.zIndex="20";
     videoPlayer.parentElement.style.zIndex="20";
     videoClose.style.zIndex="25";
-    video.play();
+    player.play();
 });
 
 videoClose.addEventListener('click', () => {
     videoPlayer.style.zIndex="-25";
     videoPlayer.parentElement.style.zIndex="-25";
     videoClose.style.zIndex="-25";
-    video.pause();
+    player.pause();
 });
 
 gsap.to("#video-player", {
@@ -147,7 +150,7 @@ gsap.to("#video-player", {
     },
     opacity: 0
 });  
-*/
+
 tl.to(".footprint-a", {
     scrollTrigger: {
         trigger: "#footprints-trigger",

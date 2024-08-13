@@ -175,15 +175,16 @@ body {
 }
 
 .scene {
+  display: none;
+  /*
   position: fixed;
   top: 0;
   left: 0;
   z-index: -1;
   @media (max-width: $phone) {
     display: none;
-  }
+  }*/
 }
-
 .intro-video {
   display: flex;
   align-items: center;
@@ -220,8 +221,7 @@ body {
     }
   }
   .play-button {
-    /* display: grid; */
-    display: none;
+    display: grid;
     transition: 0.25s all;
     bottom: 8vh;
     margin-bottom: 2em;
@@ -240,7 +240,7 @@ body {
       justify-self: center;
       font-size: 2em;
       margin-bottom: 0.5em;
-      color: $dark;
+      color: $black;
       padding-top: 10px;
     }
   }
@@ -1152,6 +1152,26 @@ body {
 
 .buzz-bottom img {
   margin-bottom: -8em;
+}
+.laurel-container {
+  padding: 1em 0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+  flex-flow: wrap;
+  a {
+    overflow: hidden;
+    img {
+      width: 100%;
+      max-width: 150px;
+      text-align: center;
+      @include phone-up {
+        max-width: 175px;
+      }
+    }
+  }
 }
 
 #footprints-container-2 {

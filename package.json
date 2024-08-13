@@ -44,6 +44,7 @@
     "vite": "^4.0.1"
   },
   "dependencies": {
+    "@vimeo/player": "^2.23.1",
     "gsap": "^3.11.3",
     "lil-gui": "^0.17.0",
     "ogl": "^0.0.101",
