@@ -144,7 +144,7 @@ body {
 
 .texture {
   &.top {
-    margin-bottom: -8px;
+    margin-bottom: -4px;
   }
   &.light {
     filter: invert(13%) sepia(47%) saturate(7310%) hue-rotate(355deg) brightness(93%) contrast(64%);
@@ -154,7 +154,10 @@ body {
     margin-top: -1px;
   }
   &.bottom {
-    margin: -8px;
+    margin: -4px;
+    &.crew-top {
+      margin-top: 0px;
+    }
   }
 }
 
@@ -193,9 +196,14 @@ body {
   color: $white;
   background-size: cover;
   height: 0 !important;
-  @media (max-width: $phone) {
-    background-image: url("../img/intro-ss.webp");
-    background-position: center;
+  #bgvid {
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
   }
   @include desktop-up {
     justify-content: flex-start;
@@ -231,6 +239,7 @@ body {
     transition: 0.25s all;
     bottom: 8vh;
     margin-bottom: 2em;
+    z-index: 10;
     &:hover {
       cursor: pointer;
       transform: scale(1.1) rotate(5deg);
@@ -292,6 +301,9 @@ body {
   #text-1 {
     display: flex;
   }
+  h3 {
+    color: $white;
+  }
   .width-container {
     padding: 14em 2em 2em;
     .text-block {
@@ -331,6 +343,7 @@ body {
   align-items: center;
   margin: 1em;
   flex-wrap: wrap;
+  z-index: 10;
   div {
     min-width: 25px;
   }
@@ -384,10 +397,6 @@ body {
   }
 }
 
-#footprints-trigger {
-  position: absolute;
-  top: 100%;
-}
 #footprints-container {
   position: fixed;
   width: 100%;
@@ -513,11 +522,9 @@ body {
 
 .residents {
   h2 {
-    color: $white;
-    padding: 0.25em 0.5em 0 0.5em;
+    padding: 0 0.5em 0 0.25em;
     @include phone-up {
       position: absolute;
-      right: 0;
       top: -1.25em;
       text-align: right;
     }
@@ -892,13 +899,17 @@ body {
 .crew-screen {
   overflow: hidden;
   #crew {
-    padding: 0.25em 0.5em;
+    padding: 0 0.5em 0.25em 0.5em;
+    text-align: right;
   }
   .crew-top img {
     margin-bottom: -5em;
     @include phone-up {
       margin-bottom: -14em;
     }
+  }
+  h2 {
+    color: $white;
   }
   .crew-container {
     display: grid;
@@ -1052,10 +1063,10 @@ body {
       }
     }
     #daisy {
-      background-image: url("../img/daisy.webp");
+      background-image: url("../img/daisy2.webp");
     }
     #soph {
-      background-image: url("../img/soph-2.webp");
+      background-image: url("../img/soph3.webp");
     }
     #lea {
       background-image: url("../img/lea.webp");
@@ -1077,7 +1088,7 @@ body {
       background-image: url("../img/leah.webp");
     }
     #zach {
-      background-image: url("../img/zach.webp");
+      background-image: url("../img/zach2.webp");
     }
     #poly {
       background-image: url("../img/polyester.webp");
@@ -1116,7 +1127,6 @@ body {
   position: relative;
   h2 {
     text-align: center;
-    color: $white;
   }
   p {
     font-size: 1.25em;
@@ -1340,7 +1350,6 @@ body {
     }
   }
   @include desktop-up {
-    grid-template-columns: 2fr 2fr 2fr 2fr;
     padding: 5em 2em !important;
   }
 }
