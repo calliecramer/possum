@@ -107,6 +107,12 @@ body {
       }
     }
   }
+  .white {
+    color: $white;
+  }
+  .underline {
+    text-decoration: underline !important;
+  }
 }
 
 .screen {
@@ -1094,7 +1100,7 @@ body {
       background-image: url("../img/polyester.webp");
     }
     #ariel {
-      background-image: url("../img/ariel-headshot.webp");
+      background-image: url("../img/ariel-headshot2.webp");
     }
     #wren {
       background-image: url("../img/wren.webp");
