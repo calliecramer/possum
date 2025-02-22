@@ -117,8 +117,10 @@ body {
 
 .screen {
   width: 100vw;
-  min-height: 100vh;
-  min-height: calc(var(--vh, 1vh) * 100);
+  min-height: calc(var(--vh, 1vh) * 90);
+  @include phone-up {
+    min-height: calc(var(--vh, 1vh) * 70);
+  }
   h2 {
     padding: 0.25em;
     padding-bottom: 0;
@@ -1072,7 +1074,7 @@ body {
       background-image: url("../img/daisy2.webp");
     }
     #soph {
-      background-image: url("../img/soph3.webp");
+      background-image: url("../img/soph-4.webp");
     }
     #lea {
       background-image: url("../img/lea.webp");
@@ -1365,5 +1367,22 @@ body {
   text-align: center;
   a {
     color: $white;
+  }
+}
+
+.banner {
+  position: sticky;
+  background-color: #4a1622;
+  color: $white;
+  width: 100%;
+  bottom: 0;
+  text-align: center;
+  z-index: 100;
+  p {
+    padding: 10px;
+    font-size: .8em;;
+    @include phone-up {
+      font-size: 1em;
+    }
   }
 }
